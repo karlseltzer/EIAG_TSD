@@ -1,0 +1,30 @@
+--- 
+documentclass: book
+classoption: oneside
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 11pt
+---
+
+```{r, include=FALSE}
+library(readxl)
+library(knitr)
+library(kableExtra)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(scales)
+```
+
+# Acronyms and Chemical Notations {-}
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-0/acronyms.xlsx")
+```
+
+```{r table-single, tidy=FALSE, echo=FALSE}
+knitr::kable(df, longtable = TRUE, booktabs = TRUE, col.names=NULL)
+```

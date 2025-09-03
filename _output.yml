@@ -1,0 +1,35 @@
+bookdown::html_chapters:
+  css: [css/style.css, css/toc.css]
+bookdown::gitbook:  # generates a HTML book
+  dev: svglite
+  css: css/style.css
+  split_by: section
+  toc_depth: 3
+  config:
+    toc:
+      collapse: none
+      before: |
+        <li><a href="./">The 2020 NEI TSD</a></li>
+      after: |
+        <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+    download: [pdf]  # enables a PDF download link
+    sharing:
+      github: no
+      facebook: no
+    search:
+      engine: fuse
+bookdown::pdf_book:
+  includes:
+    in_header: latex/preamble.tex
+    before_body: latex/before_body.tex
+  fig_caption: true
+  keep_tex: yes
+  dev: "cairo_pdf"
+  latex_engine: xelatex
+  citation_package: natbib
+  template: null
+  pandoc_args: --top-level-division=chapter
+  toc_depth: 4
+  toc_unnumbered: no
+  toc_appendix: yes
+  quote_footer: ["\\VA{", "}{}"]
