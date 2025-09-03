@@ -16,6 +16,8 @@ bookdown::gitbook:  # generates a HTML book
     sharing:
       github: no
       facebook: no
+      twitter: no
+      all: no
     search:
       engine: fuse
 bookdown::pdf_book:
