@@ -8,8 +8,8 @@ bookdown::gitbook:  # generates a HTML book
   config:
     toc:
       collapse: none
-      before: |
-        <li><a href="./">The 2020 NEI TSD</a></li>
+      #before: |
+      #  <li><a href="./">The 2020 NEI TSD</a></li>
       after: |
         <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
     download: [pdf]  # enables a PDF download link
@@ -31,7 +31,7 @@ bookdown::pdf_book:
   citation_package: natbib
   template: null
   pandoc_args: --top-level-division=chapter
-  toc_depth: 4
-  toc_unnumbered: no
-  toc_appendix: yes
+  #toc_depth: 4
+  #toc_unnumbered: no
+  #toc_appendix: yes
   quote_footer: ["\\VA{", "}{}"]

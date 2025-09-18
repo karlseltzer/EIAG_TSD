@@ -27,8 +27,8 @@ library(scales)
 <p style="text-align: right;">EPA-454/R-23-001a<br>
 March 2023</p>
 
-![](figures/epa-logo.jpg){width=15%}  
-<span style="font-size: 30px;">**2020 National Emissions Inventory Technical Support Document**</span>
+![](figures/epa-logo.jpg){width=20%}  
+<span style="font-size: 30px;">**2023 National Emissions Inventory Technical Support Document**</span>
 
 <br> <br> <br> <br> <br> <br> <br>
 

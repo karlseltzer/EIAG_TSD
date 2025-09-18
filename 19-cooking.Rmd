@@ -1,0 +1,290 @@
+--- 
+documentclass: book
+classoption: oneside
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 11pt
+---
+
+```{r, include=FALSE}
+library(readxl)
+library(knitr)
+library(kableExtra)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(glue)
+```
+
+# Cooking {#cooking}
+
+## Sector Descriptions and Overview 
+
+Cooking is a source of both gaseous and particulate pollutants [[ref 1](#cooking-references) – [ref 7](#cooking-references)]. Primary particulate emissions from cooking are predominantly organic carbon [[ref 2](#cooking-references), [ref 5](#cooking-references)] and positive matrix factorization analysis of Aerosol Mass Spectrometry data from multiple cities in the United States suggest cooking contributes ~16% of observed organic aerosol and ~8% of observed PM2.5 in urban areas [[ref 8](#cooking-references) – [ref 9](#cooking-references)]. In the NEI, emissions are estimated from the cooking of meat, including steak, hamburger, poultry, pork, and seafood, and french fries on five different cooking devices: chain-driven (conveyorized) charbroilers, underfired charbroilers, deep-fat fryers, flat griddles and clamshell griddles. The table below notes all SCCs covered in this source category and the SCCs for which the EPA generates default emissions. 
+
+Table \@ref(tab:cooking-sccs) notes all SCCs covered in this source category and the SCCs for which the EPA generates default emissions. 
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-19/cooking-sccs.xlsx")
+df[is.na(df)] <- ""
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE,
+  caption = 'Cooking SCCs in the 2023 NEI.',
+  label = 'cooking-sccs'
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = "scale_down")
+```
+
+## EPA-developed estimates
+
+To estimate emissions from commercial establishments, the amount of meat and french fries cooked on various cooking devices in each county is estimated. These estimates are year-specific and based on activity statistics from a 2001 telephone survey in southern California [[ref 10]](#cooking-references) and annually varying restaurant count statistics from Open Street Map [[ref 11]](#cooking-references). These meat consumption estimates are then scaled to match estimates of commercially consumed meat consumption statistics from the U.S. Department of Agriculture’s Food Availability Data System [[ref 12]](#cooking-references). The amount of french fries cooked by the foodservice industry is from a report prepared for Potatoes USA [[ref 13]](#cooking-references). For residential cooking sources, the mass of residentially consumed meat consumption statistics from the U.S. Department of Agriculture’s Food Availability Data System are also used. The total amount of meat or french fries cooked on each device is then multiplied by emissions factors for relevant pollutants to estimate emissions from cooking.
+
+### Activity Data
+
+Activity data is the amount of meat consumed away from home and at home. For commercial cooking, these estimates are based on a 2001 telephone survey in southern California [[ref 10]](#cooking-references) that reports the fraction of restaurants in a county that use different pieces of commercial cooking equipment by restaurant-type, the average number of cooking devices per restaurant, and the average mass of meat cooked on each device. The county-level number of various restaurant-types are retrieved from Open Street Map [[ref 11]](#cooking-references). Restaurant count statistics are pulled from this database using the SIC codes listed in Table \@ref(tab:sic-codes).
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-19/sic-codes.xlsx")
+df[is.na(df)] <- ""
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE,
+  caption = 'SIC codes used to classify restaurant types.',
+  label = 'sic-codes'
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = "scale_down")
+```
+
+County-level restaurant count statistics are then multiplied by the fraction of restaurants in a county that use different pieces of commercial cooking equipment by restaurant-type, the average number of cooking devices per restaurant, and the average mass of meat cooked on each device. These values are summarized in Tables \@ref(tab:fraction-appliance) - Tables \@ref(tab:mass-appliance).
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-19/fraction-appliance.xlsx")
+df[is.na(df)] <- ""
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE,
+  caption = 'Fraction of restaurants in a county that use different pieces of commercial cooking equipment by restaurant-type.',
+  label = 'fraction-appliance'
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
+```
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-19/number-appliance.xlsx")
+df[is.na(df)] <- ""
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE,
+  caption = 'Average number of cooking devices per restaurant. Average of non-specific charbroiler and griddle used, where necessary.',
+  label = 'number-appliance'
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
+```
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-19/mass-appliance.xlsx")
+df[is.na(df)] <- ""
+last_col_index <- ncol(df)
+df[[2]] <- round(as.numeric(df[[2]]), 1)
+df[[last_col_index]] <- round(as.numeric(df[[last_col_index]]), 1)
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE,
+  caption = 'Average mass of meat cooked per year on each cooking device (tons).',
+  label = 'mass-appliance'
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
+```
+
+The total mass of each type of meat commercially cooked on each appliance-type in a county is then estimated using the following equation:
+
+\begin{equation} 
+  M{c,t,a} = \sum_{r}(R_{c,a} \times A_{r,a} \times N_{r,a}) \times T_{t,a} \times SF_{t}
+  (\#eq:mass-meat)
+\end{equation} 
+
+<div style="margin-left: 2em;">
+  Where: <br> \newline
+  \( M_{c,t,a} \) = Estimated mass of commercially cooked meat in county (*c*) for each meat-type (*t*) on each appliance (*a*), in tons <br> \newline
+  \( R_{c,r} \) = Number of restaurants in county (*c*) for each restaurant-type (*r*), in # <br> \newline
+  \( A_{r,a} \) = Estimated percent of restaurants for each restaurant-type (*r*) containing > 1 appliance (*a*), in % <br> \newline
+  \( N_{r,a} \) = Estimated number of appliances (*a*) for each restaurant-type (*r*), when appliance (*a*) is present, in # <br> \newline
+  \( T_{t,a} \) = Average mass of meat cooked for each meat-type (*t*) on each appliance (*a*), in tons/appliance <br> \newline
+  \( SF_{t} \) = Scale factor for each meat-type (*t*) applied to ensure national-level meat consumption matches USDA statistics, in % <br> \newline
+  \( c \) = County <br> \newline
+  \( t \) = Meat-Type (e.g., Steak, Hamburger, etc.) <br> \newline
+  \( r \) = Restaurant-Type (e.g., Fast Food, Family, Seafood, etc.) <br> \newline
+  \( a \) = Appliance (e.g., Conveyorized Charbroiler, Underfired Charbroiler, etc.) <br> \newline
+</div>
+
+The Scale Factor in Eqn. \@ref(eq:mass-meat) is year-specific and derived using meat consumption statistics from the U.S. Department of Agriculture’s Food Availability Data System [[ref 12]](#cooking-references). Data on the total retail consumption (disappearance) of beef, pork, veal, and lamb, chicken and turkey, and seafood are retrieved, and using data from the USDA’s Food Consumption and Nutrition Intakes, it is assumed that ~65% of meat is consumed at home and ~35% is consumed away from home (restaurants, fast food, school, etc.). These percentages are subsequently used to estimate consumption at home and scale commercial cooking meat consumption. In Table \@ref(tab:USDA-consumption), total residential and commercial meat consumption from the USDA’s Food Availability Data System by meat-type estimates are provided for recent years. Table \@ref(tab:scale-factor) illustrates the derivation of the Scale Factor used in Eqn. \@ref(eq:mass-meat) for 2021.
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-19/USDA-consumption.xlsx")
+df[is.na(df)] <- ""
+last_col_index <- ncol(df)
+df[[last_col_index]] <- as.numeric(df[[last_col_index]])
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE,
+  caption = 'Total Retail Consumption from USDA Food Availability Data System',
+  label = 'USDA-consumption'
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
+```
+\noindent
+\* = Consumption statistics for fresh and frozen fish and shellfish is not available after 2018
+
+```{r, include=FALSE}
+df <- data.frame(
+  Quantity = c("USDA Consumption at Home\\*", 
+               "USDA Commercial Consumption\\*", 
+               "Base Methods Commercial Consumption", 
+               "Scale Factor"),
+  Steak     = c("3,172,566",
+                "1,708,305",
+                "8,583,805",
+                "0.20"),
+  Hamburger = c("3,172,566",
+                "1,708,305",
+                "18,206,818",
+                "0.09"),
+  Poultry  = c("12,158,936",
+               "6,547,120",
+               "22,104,545",
+               "0.30"),
+  Pork     = c("5,457,592",
+               "2,938,703",
+               "3,986,449",
+               "0.74"),
+  Seafood  = c("1,305,599",
+               "700,901",
+               "8,392,852",
+               "0.08"),
+  Other    = c("163,281",
+               "87,921",
+               "8,888,702",
+               "0.01")
+)
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE, 
+  caption = 'Scale Factor Derivation',
+  col.names = c("Quantity", "Steak\\*\\*", "Hamburger\\*\\*", "Poultry", "Pork", "Seafood", "Other"),
+  label = "scale-factor"
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
+```
+\noindent
+\* = Using data from the USDA’s Food Consumption and Nutrition Intakes, it is assumed that ~65% of meat is consumed at home and ~35% is consumed away from home (restaurants, fast food, school, etc.). 
+\*\* = It is assumed that half of all beef consumption reported in the USDA’s Food Availability Data System is steak and half is hamburger.
+
+The amount of french fries cooked in each county is calculated based on the amount of frozen potatoes used in the foodservice industry. The total amount of french fries cooked is reported at the national level. The process used to distribute the national amount of french fries cooked to the county-level is discussed in the next section.
+
+### Allocation Procedure
+
+
+
+### Emission Factors
+
+
+
+### Controls
+
+There are no controls assumed for this category.
+
+### Emissions
+
+\begin{equation} 
+  E_{c,a} = Usage_{c,a} \times \frac{EF_{a}}{2000}
+  (\#eq:cooking-emissions)
+\end{equation} 
+
+<div style="margin-left: 2em;">
+  Where: <br> \newline
+  \( E_{c,a} \) = Annual emissions in county *c* for application *a*, in short tons <br> \newline
+  \( Usage_{c,a} \) = Liquid asphalt usage in county *c* for application *a*, in short tons <br> \newline
+  \( EF_{a} \) = Emission factor for application *a*, in lb/ton asphalt <br> \newline
+  \( a \) = Application types include hot-mix, warm-mix, cutback, and emulsified <br> \newline
+</div>
+
+### Sample Calculations
+
+Table \@ref(tab:cooking-sample-calculations) contains sample calculations for VOC emissions from emulsified asphalt (SCC: 2461022000). The values in these equations are demonstrating program logic and are not representative of any specific NEI year or county.
+
+```{r, include=FALSE}
+df <- data.frame(
+  Eq = c(1:4),
+  Equation = c("$Usage_{s,a} = Usage_{sp,a} \\times \\frac{HA_{s}}{HA_{sp}}$", 
+               "Only applicable for hot- and warm-mix", 
+               "$Usage_{c,a} = Usage_{s,a} \\times \\frac{\\sum_{r}PVMT_{c}}{\\sum_{r}PVMT_{s}}$", 
+               "$E_{c,a} = Usage_{c,a} \\times \\frac{EF_{a}}{2000}$"),
+  Values = c("$172 \\times \\frac{6.5}{19.9}$", 
+             "--", 
+             "$56 \\times \\frac{2.38E^9}{5.15E^{10}}$", 
+             "$2.58 \\times \\frac{197.52}{2000}$"),
+  Result = c("56 short tons of liquid asphalt usage for emulsified applications", 
+             "--", 
+             "2.58 short tons of liquid asphalt usage for emulsified applications", 
+             "0.26 short tons of VOC emissions from emulsified asphalt")
+)
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE, 
+  escape = FALSE, # This is important to render LaTeX math properly
+  caption = 'Sample Calculations',
+  col.names = c("Eq. \\#", "Equation", "Values", "Result"),
+  label = "cooking-sample-calculations"
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = "scale_down")
+```
+
+### Improvements/Changes in the 2023 NEI
+
+-	Sector changed from “Commercial Cooking” to “Cooking” to include both commercial and residential cooking.
+-	Scale Factor are applied to the average amount of meat cooked on each cooking device to ensure national-level meat consumption matches USDA statistics.
+-	Emission Factors were updated
+
+
+### Puerto Rick and U.S. Virgin Islands
+
+Insufficient data exists to calculate emissions for the counties in Puerto Rico and the US Virgin Islands. As such, emissions are based on two proxy counties in Florida: 12011 (Broward County) for Puerto Rico and 12087 (Monroe County) for the U.S. Virgin Islands. Per-capita emission factors from Broward County and Monroe County are applied to Puerto Rico and the U.S. Virgin Islands, respectively.
+
+## References {#cooking-references}
+
+1.	R. Fortmann, P. Kariher and R. Clayton, Indoor Air Quality: Residential Cooking Exposures, ARCADIS Geraghty & Miller, Inc., Prepared for the State of California Air Resources Board; Contract Num: 97-330, 2001.
+2.	N. Gysel, W. A. Welch, C. L. Chen, P. Dixit, D. R. Cocker, 3rd and G. Karavalakis, Particulate matter emissions and gaseous air toxic pollutants from commercial meat cooking operations, Journal of Environmental Science, 2018, 65, 162-170.
+3.	F. Klein, S. M. Platt, N. J. Farren, A. Detournay, E. A. Bruns, C. Bozzetti, K. R. Daellenbach, D. Kilic, N. K. Kumar, S. M. Pieber, J. G. Slowik, B. Temime-Roussel, N. Marchand, J. F. Hamilton, U. Baltensperger, A. S. Prevot and I. El Haddad, Characterization of Gas-Phase Organics Using Proton Transfer Reaction Time-of-Flight Mass Spectrometry: Cooking Emissions, Environ Sci Technol, 2016, 50, 1243-1250.
+4.	T. Liu, Z. Wang, D. D. Huang, X. Wang and C. K. Chan, Significant Production of Secondary Organic Aerosol from Emissions of Heated Cooking Oils, Environ Sci Tech Let, 2018, 5, 32-37.
+5.	J. D. McDonald, B. Zielinska, E. M. Fujita, J. C. Sagebiel, J. C. Chow and J. G. Watson, Emissions from charbroiling and grilling of chicken and beef, J Air Waste Manag Assoc, 2003, 53, 185-194.
+6.	J. J. Schauer, M. J. Kleeman, G. R. Cass and B. R. T. Simoneit, Measurement of Emissions from Air Pollution Sources. 1. C1 through C29 Organic Compounds from Meat Charbroiling, Environ Sci Technol, 1999, 33, 1566-1577.
+7.	J. J. Schauer, M. J. Kleeman, G. R. Cass and B. R. T. Simoneit, Measurement of Emissions from Air Pollution Sources. 4. C1-C27 Organic Compounds from Cooking with Seed Oils, Environ Sci Technol, 2002, 36, 567-575.
+8.	P. L. Hayes, A. M. Ortega, M. J. Cubison, K. D. Froyd, Y. Zhao, S. S. Cliff, W. W. Hu, D. W. Toohey, J. H. Flynn, B. L. Lefer, N. Grossberg, S. Alvarez, B. Rappenglueck, J. W. Taylor, J. D. Allan, J. S. Holloway, J. B. Gilman, W. C. Kuster, J. A. De Gouw, P. Massoli, X. Zhang, J. Liu, R. J. Weber, A. L. Corrigan, L. M. Russell, G. Isaacman, D. R. Worton, N. M. Kreisberg, A. H. Goldstein, R. Thalman, E. M. Waxman, R. Volkamer, Y. H. Lin, J. D. Surratt, T. E. Kleindienst, J. H. Offenberg, S. Dusanter, S. Griffith, P. S. Stevens, J. Brioude, W. M. Angevine and J. L. Jimenez, Organic aerosol composition and sources in Pasadena, California, during the 2010 CalNex campaign, J Geophys Res-Atmos, 2013, 118, 9233-9257.
+9.	Y. L. Sun, Q. Zhang, J. J. Schwab, K. L. Demerjian, W. N. Chen, M. S. Bae, H. M. Hung, O. Hogrefe, B. Frank, O. V. Rattigan and Y. C. Lin, Characterization of the sources and processes of organic and inorganic aerosols in New York city with a high-resolution time-of-flight aerosol mass apectrometer, Atmos Chem Phys, 2011, 11, 1581-1602.
+10.	M. Potepan, Charbroiling Activity Estimation, Public Research Institute, Prepared for the California Air Resources Board and the California Environmental Protection Agency; Contract Num: 98-721, 2001.
+11. [Open Street Map](https://www.openstreetmap.org/), 2023.
+12. United States Department of Agriculture, [Food Availability per Capita Data System](https://www.ers.usda.gov/data-products/food-availability-per-capita-data-system/).
+13. Technomic, 2020. [Domestic Sales and U.S. Potato Utilization Report](https://potatoesusa.com/research-reports/category/market-insights/). Prepared for Potatoes USA.
+14. Norbeck, Joseph, 1997. Further Development of Emission Test Methods and Development of Emission Factors for Various Commercial Cooking Operations. Prepared for the South Coast Air Quality Management District.
+15.	C. A. Alves, M. Evtyugina, E. Vicente, A. Vicente, C. Goncalves, A. I. Neto, T. Nunes and N. Kovats, 2022. “Outdoor charcoal grilling: Particulate and gas-phase emissions, organic speciation and ecotoxicological assessment.” Atmos Environ. 285.
