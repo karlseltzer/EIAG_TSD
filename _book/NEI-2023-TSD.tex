@@ -317,7 +317,7 @@ Table \ref{tab:cooking-sccs} notes all SCCs covered in this source category and 
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{rlllll}
 \toprule
-SCC & SCC Level 1 & SCC Level 2 & SCC Level 3 & SCC Level 4 & EPA\\
+SCC & SCC Level 1 & SCC Level 2 & SCC Level 3 & SCC Level 4 & Estimated by EPA?\\
 \midrule
 2302002000 & Industrial Processes & Food and Kindred Products: SIC 20 & Commercial Cooking - Charbroiling & Charbroiling Total & \\
 2302002100 & Industrial Processes & Food and Kindred Products: SIC 20 & Commercial Cooking – Charbroiling & Conveyorized Charbroiling & X\\
@@ -483,7 +483,282 @@ The amount of french fries cooked in each county is calculated based on the amou
 
 \subsection{Allocation Procedure}\label{allocation-procedure}
 
+Commercial meat consumption is estimated at the county-level. For residential consumption, population is used to disaggregate national-level estimates of ``at home'' meat consumption to the county-level.
+
+County-level frozen potato consumption in limited and full-service restaurants is estimated using fractions of the number of limited and full-service restaurants in each county. To estimate these fractions, it is assumed that limited service restaurants are fast food restaurants in the Open Street Map \hyperref[cooking-references]{{[}ref 11{]}} restaurant counts and full services restaurants are represented by all others. County-level fast food and other restaurants are summed and then divided by the national number of fast food or other restaurants in order to develop the county-level fractions.
+
+\begin{equation} 
+  RFrac{lim,c} = \frac{R_{lim,c}}{R_{lim,US}}
+  \label{eq:limited-county}
+\end{equation}
+\begin{equation} 
+  RFrac{full,c} = \frac{R_{full,c}}{R_{full,US}}
+  \label{eq:full-county}
+\end{equation}
+
+Where: \newline
+\(RFrac_{lim,c}\) = Fraction of limited service restaurants in county \emph{c} \newline
+\(RFrac_{full,c}\) = Fraction of full service restaurants in county \emph{c} \newline
+\(R_{lim,c}\) = The number of limited service restaurants in county \emph{c} \newline
+\(R_{full,c}\) = The number of full service restaurants in county \emph{c} \newline
+\(R_{lim,US}\) = The number of limited service restaurants in the U.S. \newline
+\(R_{full,US}\) = The number of full service restaurants in the U.S. \newline
+
+The fraction of limited and full-service restaurants in each county is then used to distribute the amount of frozen potatoes cooked in each classification of restaurants.
+
+\begin{equation} 
+  F{lim,c} = RFrac_{lim,c} \times f_{lim,US} \div 2000 lbs per ton
+  \label{eq:FF-limited-county}
+\end{equation}
+\begin{equation} 
+  F{full,c} = RFrac_{full,c} \times f_{full,US} \div 2000 lbs per ton
+  \label{eq:FF-full-county}
+\end{equation}
+
+Where: \newline
+\(F_{lim,c}\) = Amount of french fries cooked in limited service restaurants in county \emph{c}, in tons \newline
+\(F_{full,c}\) = Amount of french fries cooked in full service restaurants in county \emph{c}, in ton \newline
+\(RFrac_{lim,c}\) = Fraction of limited service restaurants in county \emph{c} \newline
+\(RFrac_{full,c}\) = Fraction of full service restaurants in county \emph{c} \newline
+\(f_{lim,US}\) = Amount of french fries cooked in limited service restaurants in the U.S., in lbs. \newline
+\(f_{full,US}\) = Amount of french fries cooked in full service restaurants in the U.S., in lbs. \newline
+
+The amount of french fries cooked in limited and full-service restaurants are then summed to the county level.
+
+\begin{equation} 
+  F{all,c} = F{lim,c} + F{full,c}
+  \label{eq:FF-total-county}
+\end{equation}
+
+Where: \newline
+\(F_{all,c}\) = Amount of french fries cooked in county \emph{c}, in tons \newline
+\(F_{lim,c}\) = Amount of french fries cooked in limited service restaurants in county \emph{c}, in tons \newline
+\(F_{full,c}\) = Amount of french fries cooked in full service restaurants in county \emph{c}, in tons \newline
+
 \subsection{Emission Factors}\label{emission-factors}
+
+Emissions factors from 5 studies are utilized to estimate emissions from commercial and residential cooking. For commercial cooking, emissions factors are retrieved from McDonald et al.~2003 \hyperref[cooking-references]{{[}ref 5{]}} and Norbeck 2007 \hyperref[cooking-references]{{[}ref 14{]}}. For residential cooking, emissions factors span several orders-of-magnitude {[}\hyperref[cooking-references]{refs 1}, \hyperref[cooking-references]{3}, \hyperref[cooking-references]{refs 15}{]}. Given the uncertainty in the emissions factors and range of the studies included here, the 90th percentile emissions factors for each pollutant for residential cooking were adopted and applied. These emissions factors should be updated as newer results become available.
+
+The PM2.5, VOC, and CO emissions factors for each SCC are listed in Table \ref{tab:comm-res-EFs}.
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:comm-res-EFs}Commercial and Residential Cooking Emissions Factors}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}[t]{rllrll}
+\toprule
+SCC & Meat & Pollutant & Emissions Factor (lb/ton meat consumption) & Reference & Notes\\
+\midrule
+2302002100 & Steak & CO & 16.58 & Ref. 5; Table 2 & Hamburger Auto-Char\\
+2302002100 & Steak & VOC & 4.55 & Ref. 14; Table XIII & Hamburger Auto-Char\\
+2302002100 & Steak & PM25-PRI & 14.80 & Ref. 14; Table XIII & Hamburger Auto-Char\\
+2302002100 & Hamburger & CO & 16.58 & Ref. 5; Table 2 & Hamburger Auto-Char\\
+2302002100 & Hamburger & VOC & 4.55 & Ref. 14; Table XIII & Hamburger Auto-Char\\
+\addlinespace
+2302002100 & Hamburger & PM25-PRI & 14.80 & Ref. 14; Table XIII & Hamburger Auto-Char\\
+2302002100 & Poultry & CO & 9.68 & Ref. 5; Table 2 & Chicken Under-Char\\
+2302002100 & Poultry & VOC & 3.65 & Ref. 14; Table V & Chicken Under-Char\\
+2302002100 & Poultry & PM25-PRI & 20.93 & Ref. 14; Table V & Chicken Under-Char\\
+2302002100 & Pork & CO & 9.68 & Ref. 5; Table 2 & Chicken Under-Char\\
+\addlinespace
+2302002100 & Pork & VOC & 3.65 & Ref. 14; Table V & Chicken Under-Char\\
+2302002100 & Pork & PM25-PRI & 20.93 & Ref. 14; Table V & Chicken Under-Char\\
+2302002100 & Seafood & CO & 9.68 & Ref. 5; Table 2 & Chicken Under-Char\\
+2302002100 & Seafood & VOC & 0.76 & Ref. 14; Table VI & Seafood Under-Char\\
+2302002100 & Seafood & PM25-PRI & 6.53 & Ref. 14; Table VI & Seafood Under-Char\\
+\addlinespace
+2302002100 & Other & CO & 9.68 & Ref. 5; Table 2 & Chicken Under-Char\\
+2302002100 & Other & VOC & 3.65 & Ref. 14; Table V & Chicken Under-Char\\
+2302002100 & Other & PM25-PRI & 20.93 & Ref. 14; Table V & Chicken Under-Char\\
+2302002200 & Steak & CO & 9.94 & Ref. 5; Table 2 & Steak Under-Char\\
+2302002200 & Steak & VOC & 1.71 & Ref. 14; Table XVII & Steak Under-Char\\
+\addlinespace
+2302002200 & Steak & PM25-PRI & 34.40 & Ref. 14; Table XVII & Steak Under-Char\\
+2302002200 & Hamburger & CO & 27.44 & Ref. 5; Table 2 & Hamburger Under-Char\\
+2302002200 & Hamburger & VOC & 7.89 & Ref. 14; Table IV & Hamburger Under-Char\\
+2302002200 & Hamburger & PM25-PRI & 65.33 & Ref. 14; Table IV & Hamburger Under-Char\\
+2302002200 & Poultry & CO & 9.68 & Ref. 5; Table 2 & Chicken Under-Char\\
+\addlinespace
+2302002200 & Poultry & VOC & 3.65 & Ref. 14; Table V & Chicken Under-Char\\
+2302002200 & Poultry & PM25-PRI & 20.93 & Ref. 14; Table V & Chicken Under-Char\\
+2302002200 & Pork & CO & 9.68 & Ref. 5; Table 2 & Chicken Under-Char\\
+2302002200 & Pork & VOC & 3.65 & Ref. 14; Table V & Chicken Under-Char\\
+2302002200 & Pork & PM25-PRI & 20.93 & Ref. 14; Table V & Chicken Under-Char\\
+\addlinespace
+2302002200 & Seafood & CO & 9.68 & Ref. 5; Table 2 & Chicken Under-Char\\
+2302002200 & Seafood & VOC & 0.76 & Ref. 14; Table VI & Seafood Under-Char\\
+2302002200 & Seafood & PM25-PRI & 6.53 & Ref. 14; Table VI & Seafood Under-Char\\
+2302002200 & Other & CO & 9.68 & Ref. 5; Table 2 & Chicken Under-Char\\
+2302002200 & Other & VOC & 3.65 & Ref. 14; Table V & Chicken Under-Char\\
+\addlinespace
+2302002200 & Other & PM25-PRI & 20.93 & Ref. 14; Table V & Chicken Under-Char\\
+2302003000 & Steak & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003000 & Steak & VOC & 0.25 & Ref. 14; Table VIII & Chicken Deep Fryer\\
+2302003000 & Steak & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003000 & Hamburger & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+\addlinespace
+2302003000 & Hamburger & VOC & 0.25 & Ref. 14; Table VIII & Chicken Deep Fryer\\
+2302003000 & Hamburger & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003000 & Poultry & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003000 & Poultry & VOC & 0.25 & Ref. 14; Table VIII & Chicken Deep Fryer\\
+2302003000 & Poultry & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+\addlinespace
+2302003000 & Pork & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003000 & Pork & VOC & 0.25 & Ref. 14; Table VIII & Chicken Deep Fryer\\
+2302003000 & Pork & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003000 & Seafood & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003000 & Seafood & VOC & 0.28 & Ref. 14; Table IX & Seafood Deep Fryer\\
+\addlinespace
+2302003000 & Seafood & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003000 & Other & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003000 & Other & VOC & 0.25 & Ref. 14; Table VIII & Chicken Deep Fryer\\
+2302003000 & Other & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003100 & Steak & CO & 0.76 & Ref. 5; Table 2 & Hamburger Griddle\\
+\addlinespace
+2302003100 & Steak & VOC & 0.14 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003100 & Steak & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003100 & Hamburger & CO & 0.76 & Ref. 5; Table 2 & Hamburger Griddle\\
+2302003100 & Hamburger & VOC & 0.14 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003100 & Hamburger & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+\addlinespace
+2302003100 & Poultry & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003100 & Poultry & VOC & 0.79 & Ref. 14; Table XI & Chicken Flat Griddle\\
+2302003100 & Poultry & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003100 & Pork & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003100 & Pork & VOC & 0.79 & Ref. 14; Table XI & Chicken Flat Griddle\\
+\addlinespace
+2302003100 & Pork & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003100 & Seafood & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003100 & Seafood & VOC & 0.21 & Ref. 14; Table XII & Seafood Griddle\\
+2302003100 & Seafood & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003100 & Other & CO & 0.90 & Ref. 14; Table 2 & Chicken Griddle\\
+\addlinespace
+2302003100 & Other & VOC & 0.79 & Ref. 14; Table XI & Chicken Flat Griddle\\
+2302003100 & Other & PM25-PRI & 10.00 & Ref. 14; Table X & Hamburger Flat Griddle\\
+2302003200 & Steak & CO & 0.76 & Ref. 5; Table 2 & Hamburger Griddle\\
+2302003200 & Steak & VOC & 0.03 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Steak & PM25-PRI & 1.70 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+\addlinespace
+2302003200 & Hamburger & CO & 0.76 & Ref. 5; Table 2 & Hamburger Griddle\\
+2302003200 & Hamburger & VOC & 0.03 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Hamburger & PM25-PRI & 1.70 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Poultry & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003200 & Poultry & VOC & 0.03 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+\addlinespace
+2302003200 & Poultry & PM25-PRI & 1.70 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Pork & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003200 & Pork & VOC & 0.03 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Pork & PM25-PRI & 1.70 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Seafood & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+\addlinespace
+2302003200 & Seafood & VOC & 0.03 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Seafood & PM25-PRI & 1.70 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Other & CO & 0.90 & Ref. 5; Table 2 & Chicken Griddle\\
+2302003200 & Other & VOC & 0.03 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+2302003200 & Other & PM25-PRI & 1.70 & Ref. 14; Table XVI & Hamburger Clam Shell Griddle\\
+\addlinespace
+2812001000 & Total & CO & 13.52 & Ref. 15; Ref. 1 & See Next Table\\
+2812001000 & Total & VOC & 0.11 & Ref. 15; Ref. 3 & See Next Table\\
+2812001000 & Total & PM25-PRI & 1.05 & Ref. 15; Ref. 1 & See Next Table\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:res-EFs}Residential cooking emissions factors used to estimate the 90th percentile}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}[t]{lllrrl}
+\toprule
+Cooking Device & Meat & Pollutant & Emission Factor (g/kg) & Emission Factor (lb/ton) & Reference\\
+\midrule
+Charcoal Grill & Seafood & VOC & 0.0826 & 0.1652 & Ref. 15\\
+Charbroiling & Hamburger & VOC & 0.0580 & 0.1160 & Ref. 3\\
+Shallow Frying & Beef & VOC & 0.0420 & 0.0840 & Ref. 3\\
+Charcoal Grill & Seafood & VOC & 0.0412 & 0.0824 & Ref. 15\\
+Deep Frying & Seafood & VOC & 0.0390 & 0.0780 & Ref. 3\\
+\addlinespace
+Charcoal Grill & Beef & VOC & 0.0350 & 0.0700 & Ref. 15\\
+Charcoal Grill & Pork & VOC & 0.0239 & 0.0478 & Ref. 15\\
+Shallow Frying & Beef & VOC & 0.0150 & 0.0300 & Ref. 3\\
+Shallow Frying & Pork & VOC & 0.0130 & 0.0260 & Ref. 3\\
+Charbroiling & Beef & VOC & 0.0110 & 0.0220 & Ref. 3\\
+\addlinespace
+Shallow Frying & Pork & VOC & 0.0070 & 0.0140 & Ref. 3\\
+Charbroiling & Poultry & VOC & 0.0040 & 0.0080 & Ref. 3\\
+Shallow Frying & Poultry & VOC & 0.0033 & 0.0066 & Ref. 3\\
+Shallow Frying & Hamburger & VOC & 0.0030 & 0.0060 & Ref. 3\\
+90th Percentile & -- & VOC & 0.0500 & 0.1100 & --\\
+\addlinespace
+Charcoal Grill & Seafood & PM25-PRI & 1.1040 & 2.2080 & Ref. 15\\
+Charcoal Grill & Seafood & PM25-PRI & 0.9180 & 1.8360 & Ref. 15\\
+Charcoal Grill & Beef & PM25-PRI & 0.5310 & 1.0620 & Ref. 15\\
+Stovetop Gas & Lasagna & PM25-PRI & 0.4528 & 0.9056 & Ref. 1\\
+Charcoal Grill & Pork & PM25-PRI & 0.4720 & 0.9440 & Ref. 15\\
+\addlinespace
+Stovetop Gas & Seafood & PM25-PRI & 0.2243 & 0.4486 & Ref. 1\\
+Stovetop Gas & Pork & PM25-PRI & 0.1922 & 0.3844 & Ref. 1\\
+Stovetop Gas & Pork & PM25-PRI & 0.1673 & 0.3346 & Ref. 1\\
+Stovetop Electric & Seafood & PM25-PRI & 0.1642 & 0.3284 & Ref. 1\\
+Stovetop Gas & Lasagna & PM25-PRI & 0.1535 & 0.3070 & Ref. 1\\
+\addlinespace
+Stovetop Gas & Seafood & PM25-PRI & 0.1409 & 0.2818 & Ref. 1\\
+Stovetop Gas & Beef & PM25-PRI & 0.0994 & 0.1988 & Ref. 1\\
+Stovetop Gas & Pork & PM25-PRI & 0.0829 & 0.1658 & Ref. 1\\
+Stovetop Electric & Pork & PM25-PRI & 0.0828 & 0.1656 & Ref. 1\\
+Stovetop Gas & Beef & PM25-PRI & 0.0721 & 0.1442 & Ref. 1\\
+\addlinespace
+Stovetop Electric & Lasagna & PM25-PRI & 0.0440 & 0.0880 & Ref. 1\\
+Stovetop Gas & Beef & PM25-PRI & 0.0288 & 0.0576 & Ref. 1\\
+Stovetop Gas & Full Meal & PM25-PRI & 0.0261 & 0.0522 & Ref. 1\\
+Stovetop Gas & Beef & PM25-PRI & 0.0166 & 0.0332 & Ref. 1\\
+Stovetop Gas & Pork & PM25-PRI & 0.0139 & 0.0278 & Ref. 1\\
+\addlinespace
+Stovetop Gas & Beef & PM25-PRI & 0.0103 & 0.0206 & Ref. 1\\
+Stovetop Gas & Pork & PM25-PRI & 0.0023 & 0.0046 & Ref. 1\\
+90th Percentile & -- & PM25-PRI & 0.5300 & 1.0500 & --\\
+Charcoal Grill & Beef & CO & 9.1300 & 18.2600 & Ref. 15\\
+Charcoal Grill & Seafood & CO & 7.0700 & 14.1400 & Ref. 15\\
+\addlinespace
+Charcoal Grill & Pork & CO & 7.0100 & 14.0200 & Ref. 15\\
+Stovetop Gas & Seafood & CO & 6.7349 & 13.4698 & Ref. 1\\
+Charcoal Grill & Seafood & CO & 5.5900 & 11.1800 & Ref. 15\\
+Stovetop Gas & Seafood & CO & 5.4280 & 10.8560 & Ref. 1\\
+Stovetop Gas & Seafood & CO & 4.0998 & 8.1996 & Ref. 1\\
+\addlinespace
+Stovetop Gas & Seafood & CO & 3.8806 & 7.7612 & Ref. 1\\
+Stovetop Electric & Seafood & CO & 2.1551 & 4.3102 & Ref. 1\\
+Stovetop Electric & Seafood & CO & 1.2163 & 2.4326 & Ref. 1\\
+Stovetop Gas & Pork & CO & 1.0343 & 2.0686 & Ref. 1\\
+Stovetop Gas & Lasagna & CO & 0.9655 & 1.9310 & Ref. 1\\
+\addlinespace
+Stovetop Gas & Pork & CO & 0.7233 & 1.4466 & Ref. 1\\
+Stovetop Gas & Lasagna & CO & 0.7142 & 1.4284 & Ref. 1\\
+Stovetop Gas & Pork & CO & 0.3775 & 0.7550 & Ref. 1\\
+Stovetop Gas & Pork & CO & 0.3330 & 0.6660 & Ref. 1\\
+Microwave & Pork & CO & 0.2213 & 0.4426 & Ref. 1\\
+\addlinespace
+Stovetop Gas & Pork & CO & 0.2010 & 0.4020 & Ref. 1\\
+Stovetop Gas & Beef & CO & 0.1636 & 0.3272 & Ref. 1\\
+Stovetop Gas & Full Meal & CO & 0.1609 & 0.3218 & Ref. 1\\
+Stovetop Gas & Beef & CO & 0.1563 & 0.3126 & Ref. 1\\
+Stovetop Gas & Beef & CO & 0.1376 & 0.2752 & Ref. 1\\
+\addlinespace
+Stovetop Gas & Pork & CO & 0.1186 & 0.2372 & Ref. 1\\
+Stovetop Gas & Beef & CO & 0.0927 & 0.1854 & Ref. 1\\
+Microwave & Lasagna & CO & 0.0874 & 0.1748 & Ref. 1\\
+Stovetop Electric & Lasagna & CO & 0.0753 & 0.1506 & Ref. 1\\
+Stovetop Gas & Beef & CO & 0.0701 & 0.1402 & Ref. 1\\
+\addlinespace
+Stovetop Electric & Pork & CO & 0.0610 & 0.1220 & Ref. 1\\
+Stovetop Gas & Beef & CO & 0.0532 & 0.1064 & Ref. 1\\
+Stovetop Electric & Pork & CO & 0.0264 & 0.0528 & Ref. 1\\
+90th Percentile & -- & CO & 6.7600 & 13.5200 & --\\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 \subsection{Controls}\label{controls}
 
@@ -491,34 +766,38 @@ There are no controls assumed for this category.
 
 \subsection{Emissions}\label{emissions}
 
+Emissions are quantified using county-level consumption estimates and the emissions factors provided above as follows:
 \begin{equation} 
-  E_{c,a} = Usage_{c,a} \times \frac{EF_{a}}{2000}
+  E_{c,a} = \sum_{t}(M_{c,t,a} \times EF_{t,a})
   \label{eq:cooking-emissions}
 \end{equation}
 
 Where: \newline
-\(E_{c,a}\) = Annual emissions in county \emph{c} for application \emph{a}, in short tons \newline
-\(Usage_{c,a}\) = Liquid asphalt usage in county \emph{c} for application \emph{a}, in short tons \newline
-\(EF_{a}\) = Emission factor for application \emph{a}, in lb/ton asphalt \newline
-\(a\) = Application types include hot-mix, warm-mix, cutback, and emulsified \newline
+\(E_{c,a}\) = Estimated annual emissions in county \emph{c} on each appliance \emph{a}, in tons \newline
+\(M_{c,t,a}\) = Estimated mass of commercially cooked meat in county \emph{c} for each meat-type \emph{t} on each appliance \emph{a}, in tons \newline
+\(EF_{t,a}\) = Emissions factor for meat-type \emph{t} on appliance \emph{a}, in lbs/ton \newline
+\(c\) = County \newline
+\(t\) = Meat-Type (e.g., Steak, Hamburger, etc.) \newline
+\(a\) = Appliance (e.g., Conveyorized Charbroiler, Underfired Charbroiler, etc.) \newline
 
 \subsection{Sample Calculations}\label{sample-calculations}
 
-Table \ref{tab:cooking-sample-calculations} contains sample calculations for VOC emissions from emulsified asphalt (SCC: 2461022000). The values in these equations are demonstrating program logic and are not representative of any specific NEI year or county.
+Table \ref{tab:cooking-sample-calculations} contains sample calculations for VOC emissions from commercial cooking on flat griddles. The values in these equations are demonstrating program logic and are not representative of any specific NEI year or county..
 
 \begin{table}
 \centering
 \caption{\label{tab:cooking-sample-calculations}Sample Calculations}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}[t]{rlll}
+\begin{tabular}[t]{llll}
 \toprule
 Eq. \# & Equation & Values & Result\\
 \midrule
-1 & $Usage_{s,a} = Usage_{sp,a} \times \frac{HA_{s}}{HA_{sp}}$ & $172 \times \frac{6.5}{19.9}$ & 56 short tons of liquid asphalt usage for emulsified applications\\
-2 & Only applicable for hot- and warm-mix & -- & --\\
-3 & $Usage_{c,a} = Usage_{s,a} \times \frac{\sum_{r}PVMT_{c}}{\sum_{r}PVMT_{s}}$ & $56 \times \frac{2.38E^9}{5.15E^{10}}$ & 2.58 short tons of liquid asphalt usage for emulsified applications\\
-4 & $E_{c,a} = Usage_{c,a} \times \frac{EF_{a}}{2000}$ & $2.58 \times \frac{197.52}{2000}$ & 0.26 short tons of VOC emissions from emulsified asphalt\\
+1a & $R_{c,r} \times A_{r,a} \times N_{r,a}$ & $6 \times 51.9\% \times 1.43$ & 4.45 flat griddles in fast food restaurants\\
+1b & $\sum_{r}(R_{c,r} \times A_{r,a} \times N_{r,a})$ & $\sum(Flat Griddles)$ & 9.5 flat griddles in all restaurants\\
+1c & $\sum_{r}(R_{c,r} \times A_{r,a} \times N_{r,a}) \times T_{t,a} \times SF_{t}$ & $9.5 \times 9.4 \times 9.38\%$ & 8.38 tons of hamburger cooked on flat griddles\\
+2a & $M_{c,t,a} \times EF_{t,a}$ & $8.38 \times 0.14 \div 2000$ & 0.00059 tons VOC emissions from cooking hamburgers on flat griddles\\
+2b & $\sum_{t}(M_{c,t,a} \times EF_{t,a})$ & $\sum(VOC emissions)$ & 0.04 tons VOC emissions from flat griddles\\
 \bottomrule
 \end{tabular}}
 \end{table}

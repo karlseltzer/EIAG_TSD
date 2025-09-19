@@ -8,10 +8,11 @@ bookdown::gitbook:  # generates a HTML book
   config:
     toc:
       collapse: none
+      #depth: 3
       #before: |
       #  <li><a href="./">The 2020 NEI TSD</a></li>
-      after: |
-        <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+      #after: |
+      #  <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
     download: [pdf]  # enables a PDF download link
     sharing:
       github: no
