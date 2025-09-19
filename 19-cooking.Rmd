@@ -1,3 +1,28 @@
+--- 
+site: bookdown::bookdown_site
+documentclass: book
+classoption: oneside
+#bibliography: [book.bib, pakages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 11pt
+#github-repo: tbd/tbd
+---
+
+```{r, include=FALSE}
+library(readxl)
+library(knitr)
+library(kableExtra)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(glue)
+```
+
 # Cooking {#cooking}
 
 ## Sector Descriptions and Overview 
@@ -180,7 +205,63 @@ The amount of french fries cooked in each county is calculated based on the amou
 
 ### Allocation Procedure
 
+Commercial meat consumption is estimated at the county-level. For residential consumption, population is used to disaggregate national-level estimates of “at home” meat consumption to the county-level.  
 
+County-level frozen potato consumption in limited and full-service restaurants is estimated using fractions of the number of limited and full-service restaurants in each county. To estimate these fractions, it is assumed that limited service restaurants are fast food restaurants in the Open Street Map [[ref 11]](#cooking-references) restaurant counts and full services restaurants are represented by all others. County-level fast food and other restaurants are summed and then divided by the national number of fast food or other restaurants in order to develop the county-level fractions.  
+
+\begin{equation} 
+  RFrac{lim,c} = \frac{R_{lim,c}}{R_{lim,US}}
+  (\#eq:limited-county)
+\end{equation} 
+\begin{equation} 
+  RFrac{full,c} = \frac{R_{full,c}}{R_{full,US}}
+  (\#eq:full-county)
+\end{equation} 
+
+<div style="margin-left: 2em;">
+  Where: <br> \newline
+  \( RFrac_{lim,c} \) = Fraction of limited service restaurants in county *c* <br> \newline
+  \( RFrac_{full,c} \) = Fraction of full service restaurants in county *c* <br> \newline
+  \( R_{lim,c} \) = The number of limited service restaurants in county *c* <br> \newline
+  \( R_{full,c} \) = The number of full service restaurants in county *c* <br> \newline
+  \( R_{lim,US} \) = The number of limited service restaurants in the U.S. <br> \newline
+  \( R_{full,US} \) = The number of full service restaurants in the U.S. <br> \newline
+</div>
+
+The fraction of limited and full-service restaurants in each county is then used to distribute the amount of frozen potatoes cooked in each classification of restaurants.  
+
+\begin{equation} 
+  F{lim,c} = RFrac_{lim,c} \times f_{lim,US} \div 2000 lbs per ton
+  (\#eq:FF-limited-county)
+\end{equation} 
+\begin{equation} 
+  F{full,c} = RFrac_{full,c} \times f_{full,US} \div 2000 lbs per ton
+  (\#eq:FF-full-county)
+\end{equation} 
+
+<div style="margin-left: 2em;">
+  Where: <br> \newline
+  \( F_{lim,c} \) = Amount of french fries cooked in limited service restaurants in county *c*, in tons <br> \newline
+  \( F_{full,c} \) = Amount of french fries cooked in full service restaurants in county *c*, in ton <br> \newline
+  \( RFrac_{lim,c} \) = Fraction of limited service restaurants in county *c* <br> \newline
+  \( RFrac_{full,c} \) = Fraction of full service restaurants in county *c* <br> \newline
+  \( f_{lim,US} \) = Amount of french fries cooked in limited service restaurants in the U.S., in lbs. <br> \newline
+  \( f_{full,US} \) = Amount of french fries cooked in full service restaurants in the U.S., in lbs. <br> \newline
+</div>
+
+The amount of french fries cooked in limited and full-service restaurants are then summed to the county level. 
+
+\begin{equation} 
+  F{all,c} = F{lim,c} + F{full,c}
+  (\#eq:FF-total-county)
+\end{equation} 
+
+<div style="margin-left: 2em;">
+  Where: <br> \newline
+  \( F_{all,c} \) = Amount of french fries cooked in county *c*, in tons <br> \newline
+  \( F_{lim,c} \) = Amount of french fries cooked in limited service restaurants in county *c*, in tons <br> \newline
+  \( F_{full,c} \) = Amount of french fries cooked in full service restaurants in county *c*, in tons <br> \newline
+</div>
 
 ### Emission Factors
 
