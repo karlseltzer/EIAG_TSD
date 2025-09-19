@@ -38,46 +38,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -477,42 +437,22 @@ Where: \newline
 
 The Scale Factor in Eqn. \eqref{eq:mass-meat} is year-specific and derived using meat consumption statistics from the U.S. Department of Agriculture's Food Availability Data System \hyperref[cooking-references]{{[}ref 12{]}}. Data on the total retail consumption (disappearance) of beef, pork, veal, and lamb, chicken and turkey, and seafood are retrieved, and using data from the USDA's Food Consumption and Nutrition Intakes, it is assumed that \textasciitilde65\% of meat is consumed at home and \textasciitilde35\% is consumed away from home (restaurants, fast food, school, etc.). These percentages are subsequently used to estimate consumption at home and scale commercial cooking meat consumption. In Table \ref{tab:USDA-consumption}, total residential and commercial meat consumption from the USDA's Food Availability Data System by meat-type estimates are provided for recent years. Table \ref{tab:scale-factor} illustrates the derivation of the Scale Factor used in Eqn. \eqref{eq:mass-meat} for 2021.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{print}\NormalTok{(df)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 5 x 10
-##    Year `U.S. Population [millions]` `Beef [short tons]` `Veal [short tons]`
-##   <dbl>                        <dbl>               <dbl>               <dbl>
-## 1  2017                         325.             9241066               32433
-## 2  2018                         327.             9334729               36908
-## 3  2019                         328.             9513368               33726
-## 4  2020                         330.             9620124               27430
-## 5  2021                         332.             9761741               26559
-## # i 6 more variables: `Pork [short tons]` <dbl>, `Lamb [short tons]` <dbl>,
-## #   `Broilers [short tons]` <dbl>, `Other Chicken [short tons]` <dbl>,
-## #   `Turkey [short tons]` <dbl>, `Fish and Shellfish [short tons]` <dbl>
-\end{verbatim}
-
 \begin{table}[H]
 \centering
 \caption{\label{tab:USDA-consumption}Total Retail Consumption from USDA Food Availability Data System}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabu} to \linewidth {>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X}
+\begin{tabular}[t]{rrrrrrrrrr}
 \toprule
 Year & U.S. Population [millions] & Beef [short tons] & Veal [short tons] & Pork [short tons] & Lamb [short tons] & Broilers [short tons] & Other Chicken [short tons] & Turkey [short tons] & Fish and Shellfish [short tons]\\
 \midrule
 2017 & 325.206 & 9241066 & 32433 & 8084865 & 175957 & 14702927 & 190839 & 2670584 & 1957000\\
 2018 & 326.924 & 9334729 & 36908 & 8254606 & 184520 & 15023743 & 210624 & 2639784 & 2006500\\
-2019 & 328.476 & 9513368 & 33726 & 8531797 & 187058 & 15529076 & 206207 & 2624113 & 0\\
-2020 & 330.114 & 9620124 & 27430 & 8498334 & 200439 & 15794921 & 220422 & 2593854 & 0\\
-2021 & 332.141 & 9761741 & 26559 & 8396295 & 224643 & 15940560 & 228949 & 2536547 & 0\\
+2019 & 328.476 & 9513368 & 33726 & 8531797 & 187058 & 15529076 & 206207 & 2624113 & NA\\
+2020 & 330.114 & 9620124 & 27430 & 8498334 & 200439 & 15794921 & 220422 & 2593854 & NA\\
+2021 & 332.141 & 9761741 & 26559 & 8396295 & 224643 & 15940560 & 228949 & 2536547 & NA\\
 \bottomrule
-\end{tabu}}
+\end{tabular}}
 \end{table}
 
 \noindent
@@ -681,7 +621,7 @@ Usage of liquid asphalt at the state-level for each process is calculated and su
 
 Activity data for these sources are the amount of liquid asphalt used in each process. This includes cutback, emulsified, hot mix, warm mix, and roofing. Each year, the Asphalt Institute releases an asphalt usage survey for the Unites States and Canada that reflects usage among their membership \hyperref[asphalt-references]{{[}ref 1{]}}. The Asphalt Institute estimates that their membership captures 90\% of the United States market and the survey includes usage for cutback, emulsified, a summation of heated application processes, and roofing asphalt at the level of Petroleum Administration for Defense Districts (PADD) and sub-PADD levels. PADDs are geographic aggregations of the 50 states and the District of Columbia that were generated during World War II for purposes of administering oil allocation. At the sub-PADD level, usage resolution is provided in aggregations that include up to six states. Following 2020, the Asphalt Institute no longer publicly released this annual survey. As such, additional methods were used to scale the 2020 Asphalt Institute survey to 2023 values, which are further described below.
 
-Separately, state-level, year-specific data on the production of asphalt pavement (i.e., mass of asphalt binder and aggregate) for heated application and the proportions used in warm mix processes at reduced temperatures are available from a National Asphalt Pavement Association (NAPA) annual report \hyperref[asphalt-references]{{[}ref 1{]}}. This report is not used in-lieu of the Asphalt Institute report because it does not include usage of cutback, emulsified, and roofing asphalts. However, the state-level heated application usage and reduced temperature (i.e., warm mix usage) proportions are used to allocate cutback, emulsified, hot mix, and warm mix usage from the Asphalt Institute survey to the state-level. Therefore, it is assumed that the state-level proportions of liquid paving asphalt used in heated applications within a sub-PADD match the state-level proportions of liquid asphalt used in cold application (i.e., cutback and emulsified) within a sub-PADD. Furthermore, since 2023 data is available from the NAPA annual report, the state-level growth or decline in asphalt pavement usage between 2020 and 2023 from these reports are used to scale the 2020 Asphalt Institute survey to generate 2023 estimates of all paving processes. Allocation of activity data for roofing asphalt utilizes separate methods and is described below. The derivation of state-level, per-application usage is as follows:
+Separately, state-level, year-specific data on the production of asphalt pavement (i.e., mass of asphalt binder and aggregate) for heated application and the proportions used in warm mix processes at reduced temperatures are available from a National Asphalt Pavement Association (NAPA) annual report \hyperref[asphalt-references]{{[}ref 2{]}}. This report is not used in-lieu of the Asphalt Institute report because it does not include usage of cutback, emulsified, and roofing asphalts. However, the state-level heated application usage and reduced temperature (i.e., warm mix usage) proportions are used to allocate cutback, emulsified, hot mix, and warm mix usage from the Asphalt Institute survey to the state-level. Therefore, it is assumed that the state-level proportions of liquid paving asphalt used in heated applications within a sub-PADD match the state-level proportions of liquid asphalt used in cold application (i.e., cutback and emulsified) within a sub-PADD. Furthermore, since 2023 data is available from the NAPA annual report, the state-level growth or decline in asphalt pavement usage between 2020 and 2023 from these reports are used to scale the 2020 Asphalt Institute survey to generate 2023 estimates of all paving processes. Allocation of activity data for roofing asphalt utilizes separate methods and is described below. The derivation of state-level, per-application usage is as follows:
 
 \begin{equation} 
   Usage_{s,a} = Usage_{sp,a} \times \frac{HA_{s}}{HA_{sp}}
@@ -694,14 +634,14 @@ Where: \newline
 \(HA_{s}\) = Heated application usage in state \emph{s} from the NAPA survey, in short tons \newline
 \(HA_{sp}\) = Heated application usage in sub-PADD \emph{sp} associated with state \emph{s} from the NAPA survey, in short tons \newline
 \(a\) = Application types include hot-mix, warm-mix, cutback, and emulsified \newline
-\(sp\) = sub-PADD associated with state \emph{s}. sub-PADDs include the 11 districts included in the Asphalt Institute survey \hyperref[asphalt-references]{{[}ref 1{]}} \newline
+\(sp\) = sub-PADD associated with state \emph{s}. sub-PADDs include the 11 districts included in the Asphalt Institute survey \hyperref[ref-1]{{[}ref 1{]}} \newline
 
 An additional transformation must be done to split the state-level, heated application usage into hot-mix and warm-mix application, respectively.
 
-\begin{equation}
+\begin{equation} 
   Usage_{s,a} = 
   \begin{aligned}
-  &\begin{cases} s
+  &\begin{cases} 
     Usage_{s} \times \frac{WMA_{s}}{HA_{s}} & \text{for warm-mix application}\\ 
     Usage_{s} \times \frac{(1 - WMA_{s})}{HA_{s}} & \text{for hot-mix application }
   \end{cases}
@@ -711,25 +651,25 @@ An additional transformation must be done to split the state-level, heated appli
 
 Where: \newline
 \(Usage_{s,a}\) = Liquid asphalt usage in state \emph{s} for application \emph{a}, in short tons \newline
-\(Usage_{s}\) = Liquid asphalt usage in state \emph{s} for heated application, as derived in Eqn. \eqref{eq:state-usage}, in short tons \newline
+\(Usage_{s}\) = Liquid asphalt usage in state \emph{s} for heated application, as derived in \eqref{eq:state-usage}, in short tons \newline
 \(WMA_{s}\) = Warm-mix application usage at reduced temperatures in state \emph{s} from the NAPA survey, in short tons \newline
 \(HA_{s}\) = Heated application usage in state \emph{s} from the NAPA survey, in short tons. \newline
-\(a\) = Application types include hot-mix and warm-mix. State-level summation across application types in Eqn. \eqref{eq:piecewise-usage} yield the state-level application usage for heated application from Eqn. \eqref{eq:state-usage}. \newline
+\(a\) = Application types include hot-mix and warm-mix. State-level summation across application types in \eqref{eq:piecewise-usage} yield the state-level application usage for heated application from \eqref{eq:state-usage}. \newline
 
 \subsection{Allocation Procedure}\label{allocation-procedure-1}
 
 State-level asphalt usage for paving applications is allocated to the county-level using vehicular miles traveled on paved roads. As such, it is assumed that county-level paving activity is proportional to the estimated vehicular miles traveled on paved roads within each county in a state. Here, proprietary telematics data was used to generate county-specific, VMT totals on various road-types. Road-types with descriptions associated with paved/unpaved roads were separately summed, with the residual (``unknown'') VMT proportioned to the paved/unpaved assortments using the prior totals. Therefore, it is assumed that the ``unknown'' VMT is proportional to the ``known'' paved/unpaved VMT totals.
 
-County-level paved VMT estimates within a state are then paired with the usage estimates from Eqn. \eqref{eq:state-usage} and Eqn. \eqref{eq:piecewise-usage} to yield county-level asphalt usage for each process (hot mix, warm mix, cutback, and emulsified) as follows:
+County-level paved VMT estimates within a state are then paired with the usage estimates from Eqn. \eqref{eq:state-usage} - \eqref{eq:piecewise-usage} to yield county-level asphalt usage for each process (hot mix, warm mix, cutback, and emulsified) as follows:
 
 \begin{equation} 
-  Usage_{c,a} = Usage_{s,a} \times \frac{\sum_{r}PVMT_{c}}{\sum_{r}PVMT_{s}}
+  Usage_{c,a} = Usage_{s,a} \times \frac{PVMT_{c}}{PVMT_{s}}
   \label{eq:county-usage}
 \end{equation}
 
 Where: \newline
-\(Usage_{c,a}\) = Liquid asphalt usage in county \emph{c} for application \emph{a}, in short tons \newline
-\(Usage_{s,a}\) = Liquid asphalt usage in state \emph{s} associated with county \emph{c} for application \emph{a}, in short tons \newline
+\(Usage_{c,a}\) = Liquid asphalt usage in county \emph{c} for application \emph{a}, in short tons. \newline
+\(Usage_{s,a}\) = Liquid asphalt usage in state \emph{s} associated with county \emph{c} for application \emph{a}, in short tons (from Eqn. \eqref{eq:state-usage} - \eqref{eq:piecewise-usage}) \newline
 \(PVMT_{c}\) = Estimated paved vehicular miles traveled in county \emph{c}, in miles \newline
 \(PVMT_{s}\) = Estimated paved vehicular miles traveled in state \emph{s} associated with county \emph{c}, in miles \newline
 \(a\) = Application types include hot-mix, warm-mix, cutback, and emulsified \newline
@@ -740,26 +680,26 @@ Activity data for roofing asphalt is retrieved from the Asphalt Institute report
 
 Emission factors for all paving processes (hot-mix, warm-mix, cutback, and emulsified) captures emissions that occur during application and in-use. Both application and in-use emission factors for hot-mix and warm-mix asphalt, as well as the in-use emission factors for cutback and emulsified asphalt, were retrieved from Khare et al., 2020 \hyperref[asphalt-references]{{[}ref 4{]}}. Emission factors associated with application for cutback and emulsified asphalt paving were not updated.
 
-During the hot-mix application process, the asphalt pavement (i.e., mixture of liquid asphalt and aggregate) is heated and applied at elevated temperatures (\textasciitilde150 °C). Emissions are highest when sustained heating is initiated and exponentially decline thereafter. Measurements indicate that the exponential function below fits the dynamic change in emissions over a prolonged experiment (\textgreater{} 6 days). However, hot-mix asphalt is not heated for prolonged periods. Here, it is assumed that the application process takes 5 hours and is meant to capture the time between transport, paving, and ambient cooling.
+During the hot-mix application process, the asphalt pavement (i.e., mixture of liquid asphalt and aggregate) is heated and applied at elevated temperatures (\textasciitilde150 °C). Emissions are highest when sustained heating is initiated and exponentially decline thereafter. Measurements indicate that the exponential function below (Eqn. \eqref{eq:hot-application}) fits the dynamic change in emissions over a prolonged experiment (\textgreater{} 6 days). However, hot-mix asphalt is not heated for prolonged periods. Here, it is assumed that the application process takes 5 hours and is meant to capture the time between transport, paving, and ambient cooling.
 
 \begin{equation} 
-  EF = 7.7 \times \exp^{(-0.016 \times t)} + 16 \times \exp^{(-0.5 \times t)}
-  \label{eq:hot-mix-application-ef}
+  EF = 7.7 \times \exp^{-0.016t} + 16 \times \exp^{-0.5t}
+  \label{eq:hot-application}
 \end{equation}
 
 Where: \newline
 \(EF\) = Emission factor of gas-phase organics, in mg per min per kg asphalt \newline
 \(t\) = Time, in hours \newline
 
-Integrating Eqn. \eqref{eq:hot-mix-application-ef} over a period of 5 hours yields an emission factor of 4 g/kg asphalt, or 8.04 lb/short ton asphalt (i.e., 0.4\% emissions by weight), and represents the emissions from hot-mix asphalt during the application process. The warm-mix asphalt application process generally occurs at 20 -- 40 °C cooler temperatures than hot-mix asphalt application. Reducing the asphalt temperature from 140 °C to 120 °C reduced the initial pulse of emissions by \textasciitilde46\% (Fig. S5 of \hyperref[asphalt-references]{{[}ref 4{]}}). As such, a warm-mix application emission factor of 2 g/kg asphalt, or 4.32 lb/short ton asphalt (i.e., 0.2\% emissions by weight), is adopted.
+Integrating Eqn. \eqref{eq:hot-application} over a period of 5 hours yields an emission factor of 4 g/kg asphalt, or 8.04 lb/short ton asphalt (i.e., 0.4\% emissions by weight), and represents the emissions from hot-mix asphalt during the application process. The warm-mix asphalt application process generally occurs at 20 -- 40 °C cooler temperatures than hot-mix asphalt application. Reducing the asphalt temperature from 140 °C to 120 °C reduced the initial pulse of emissions by \textasciitilde46\% (Fig. S5 of \hyperref[asphalt-references]{ref 4}). As such, a warm-mix application emission factor of 2 g/kg asphalt, or 4.32 lb/short ton asphalt (i.e., 0.2\% emissions by weight), is adopted.
 
-Cutback and emulsified application emission factors are developed using compositional information from material safety and data sheets (MSDS) for cutback \hyperref[asphalt-references]{{[}ref 9{]}}) and emulsified \hyperref[asphalt-references]{{[}ref 10{]}}) asphalt. Assuming a volatilization fraction of 95\% for all components yields an emission factor of 813.96 lb/short ton asphalt (407 g/kg asphalt) for cutback applications and 195.51 lb/short ton asphalt (98 g/kg asphalt) for emulsified applications.
+Cutback and emulsified application emission factors are developed using compositional information from material safety and data sheets (MSDS) for cutback \hyperref[asphalt-references]{{[}ref 9{]}} and emulsified \hyperref[asphalt-references]{{[}ref 10{]}} asphalt. Assuming a volatilization fraction of 95\% for all components yields an emission factor of 813.96 lb/short ton asphalt (407 g/kg asphalt) for cutback applications and 195.51 lb/short ton asphalt (98 g/kg asphalt) for emulsified applications.
 
-In-use emissions follow application and occur under ambient temperatures. Since emissions are strongly influenced by temperature, climatological variation can impact the speed in which emissions occur. Measurements associated with a sustained heating experiment at 60 °C feature an exponential decline and fit the function below (Eqn. \eqref{eq:hot-mix-in-use-ef}). While 60 °C is above ambient conditions for all locations within the United States, measurements show that emissions flatten within a day and remain near-constant for more than 2 additional days. Here, it is assumed that emissions within 72-hours under 60 °C will occur within 1-year under ambient conditions at all locations within the United States. Integrating Eqn. \eqref{eq:hot-mix-in-use-ef} over a period of 72 hours yields an emission factor of 1 g/kg asphalt, or 2.01 lb/short ton asphalt (i.e., 0.1\% emissions by weight), and represents the emissions from all in-use asphalt paving process.
+In-use emissions follow application and occur under ambient temperatures. Since emissions are strongly influenced by temperature, climatological variation can impact the speed in which emissions occur. Measurements associated with a sustained heating experiment at 60 °C feature an exponential decline and fit the function below (Eqn. \eqref{eq:hot-in-use}). While 60 °C is above ambient conditions for all locations within the United States, measurements show that emissions flatten within a day and remain near-constant for more than 2 additional days. Here, it is assumed that emissions within 72-hours under 60 °C will occur within 1-year under ambient conditions at all locations within the United States. Integrating Equation 5 over a period of 72 hours yields an emission factor of 1 g/kg asphalt, or 2.01 lb/short ton asphalt (i.e., 0.1\% emissions by weight), and represents the emissions from all in-use asphalt paving process.
 
 \begin{equation} 
-  EF = 0.1 + 3.3 \times \exp^{(-0.35 \times t)}
-  \label{eq:hot-mix-in-use-ef}
+  EF = 0.1 + 3.3 \times \exp^{-0.35t}
+  \label{eq:hot-in-use}
 \end{equation}
 
 Where: \newline
@@ -768,7 +708,7 @@ Where: \newline
 
 Taken together, the VOC emission factors for all asphalt paving process are the summation of emissions associated with application and in-use.
 
-Emission factors for roofing asphalt materials are retrieved from Khare et al., 2020 \hyperref[asphalt-references]{{[}ref 4{]}}. Emissions associated with application for roof tar and in-use emissions from asphalt shingles and roof tar are separately considered and summed for total roofing asphalt emissions. Roof tar is applied at similar temperatures as hot-mix asphalt used in paving applications. Therefore, we assume a similar application emissions factor (4.0 g / kg asphalt; 8.0 lb / ton asphalt). For in-use emissions, we use the emission factors for asphalt shingles and roofing asphalt under ``no sun'' conditions from Khare et al., 2020 (Table S7 of \hyperref[asphalt-references]{{[}ref 4{]}}) and apply the duration of the experiment (46 hours) to the reported emissions factor (5.8 g / kg asphalt; 11.6 lb / ton asphalt for asphalt shingles; 13.0 g / kg asphalt; 26.0 lb / ton asphalt for roof tar). It should be noted that these are likely lower bound emissions as all roofing asphalt products are exposed to significant sunlight, which enhances emissions, and that emissions did not cease by the end of the experiment. For total roofing emissions, the prior emissions factors are weighted with the assumption that 5\% of roofing asphalt is used for roof tar, with the remaining 95\% predominantly being used for shingles (0.40 lb / ton asphalt for application; 12.32 lb / ton asphalt for in-use).
+Emission factors for roofing asphalt materials are retrieved from Khare et al., 2020 \hyperref[asphalt-references]{{[}ref 4{]}}. Emissions associated with application for roof tar and in-use emissions from asphalt shingles and roof tar are separately considered and summed for total roofing asphalt emissions. Roof tar is applied at similar temperatures as hot-mix asphalt used in paving applications. Therefore, we assume a similar application emissions factor (4.0 g / kg asphalt; 8.0 lb / ton asphalt). For in-use emissions, we use the emission factors for asphalt shingles and roofing asphalt under ``no sun'' conditions from Khare et al., 2020 (Table S7) and apply the duration of the experiment (46 hours) to the reported emissions factor (5.8 g / kg asphalt; 11.6 lb / ton asphalt for asphalt shingles; 13.0 g / kg asphalt; 26.0 lb / ton asphalt for roof tar). It should be noted that these are likely lower bound emissions as all roofing asphalt products are exposed to significant sunlight, which enhances emissions, and that emissions did not cease by the end of the experiment. For total roofing emissions, the prior emissions factors are weighted with the assumption that 5\% of roofing asphalt is used for roof tar, with the remaining 95\% predominantly being used for shingles (0.40 lb / ton asphalt for application; 12.32 lb / ton asphalt for in-use).
 
 \subsection{Controls}\label{controls-1}
 
@@ -828,9 +768,9 @@ Insufficient data exists to calculate emissions for the counties in Puerto Rico 
 \item
   U.S. Department of Transportation, Federal Highway Administration, Center for Accelerating Innovation. \href{https://www.fhwa.dot.gov/innovation/everydaycounts/edc-1/wma-faqs.cfm\#hot}{Warm Mix Asphalt FAQs}.
 \item
-  Khare, P., Machesky, J., Soto, R., He, M., Presto, A.A., Gentner, D.R., Asphalt-related emissions are a major missing nontraditional source of secondary organic aerosol precursors. Science Advances, 6, 35, 2020. \url{doi:10.1126/sciadv.abb9785}.
+  Khare, P., Machesky, J., Soto, R., He, M., Presto, A.A., Gentner, D.R., Asphalt-related emissions are a major missing nontraditional source of secondary organic aerosol precursors. Science Advances, 6, 35, \url{doi:10.1126/sciadv.abb9785}.
 \item
-  U.S. Department of Transportation, Federal Highway Administration, Functional System Length, \href{https://www.fhwa.dot.gov/policyinformation/statistics/2020/hm51.cfm}{Table HM-51 -- Highways Statistics 2020}.
+  U.S. Department of Transportation, Federal Highway Administration, Functional System Length, Table \href{https://www.fhwa.dot.gov/policyinformation/statistics/2020/hm51.cfm}{HM-51 -- Highways Statistics 2020}.
 \item
   \href{https://www.census.gov/construction/c30/xlsx/nrstate.xlsx}{Annual Value of Private Nonresidential Construction Put in Place by State}, 2008-2022, U.S. Census Bureau, 2023.
 \item
@@ -841,42 +781,49 @@ Insufficient data exists to calculate emissions for the counties in Puerto Rico 
   Cutback Asphalt MSDS
 \end{enumerate}
 
+\begin{table}[H]
+\centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{ll}
 \toprule
-Product Supplier & MSDS/SDS ID\\
+Product Supplier & MSDS\textbackslash{}/SDS ID\\
 \midrule
 Valero & 2013V04\\
 Asphalt Emulsion Industries & CUT-SDS-1\\
 Martin Asphalt Company & Jan 2007\\
 Mohawk Asphalt Emulsions & UN1999\\
-Asphalt \& Fuel Supply & 211\\
+Asphalt and Fuel Supply & 211\\
 \addlinespace
 Valero & 211\\
 Valero & 210\\
 \bottomrule
 \end{tabular}}
+\end{table}
 
+\begin{table}[H]
+\centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}[t]{llr}
+\begin{tabular}[t]{lll}
 \toprule
-Pollutant & Avg. \% by Weight & Emission Factor [lb/ton]*\\
+Pollutant & Avg. \textbackslash{}\% by Weight & Emission Factor [lb/ton]\textbackslash{}*\\
 \midrule
-Naphtha & 40 & 760.00\\
-Naphthalene \& PAH*** & 0.58 & 11.02\\
-Toluene*** & 0.59 & 11.21\\
-Xylene*** & 0.99 & 18.81\\
-Benzene*** & 0.19 & 3.61\\
+Naphtha & 40 & 760\\
+Naphthalene \& PAH\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.58 & 11.02\\
+Toluene\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.59 & 11.21\\
+Xylene\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.99 & 18.81\\
+Benzene\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.19 & 3.61\\
 \addlinespace
-Ethylbenzene*** & 0.49 & 9.31\\
-Hydrogen Sulfide*** & 0.09 & 1.71\\
-Total VOC** &  & 813.96\\
+Ethylbenzene\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.49 & 9.31\\
+Hydrogen Sulfide\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.09 & 1.71\\
+Total VOC\textbackslash{}*\textbackslash{}* & -- & 813.96\\
 \bottomrule
 \end{tabular}}
+\end{table}
 
-*Assumes 95\% volatilization
-**Excludes hydrogen sulfide (not organic)
-***Is a Hazardous Air Pollutant
+\noindent
+* = Assumes 95\% volatilization
+** = Excludes hydrogen sulfide (not organic)
+*** = Is a Hazardous Air Pollutant
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -886,32 +833,39 @@ Total VOC** &  & 813.96\\
   Emulsified Asphalt MSDS
 \end{enumerate}
 
+\begin{table}[H]
+\centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{ll}
 \toprule
-Product Supplier & MSDS/SDS ID\\
+Product Supplier & MSDS\textbackslash{}/SDS ID\\
 \midrule
 Marathon & 0137MAR019\\
 Marathon & 0138MAR019\\
 Asphalt Emulsion Industries & EMU-SDS-1\\
-U.S. Oil \& Refining Co. & 951\\
+U.S. Oil and Refining Co. & 951\\
 \bottomrule
 \end{tabular}}
+\end{table}
 
+\begin{table}[H]
+\centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}[t]{llr}
+\begin{tabular}[t]{lll}
 \toprule
-Pollutant & Avg. \% by Weight & Emission Factor [lb/ton]*\\
+Pollutant & Avg. \textbackslash{}\% by Weight & Emission Factor [lb/ton]\textbackslash{}*\\
 \midrule
-Naphtha & 10 & 190.00\\
-Naphthalene \& PAH*** & 0.29 & 5.51\\
-Hydrogen Sulfide*** & 0.09 & 1.71\\
-Total VOC** &  & 195.51\\
+Naphtha & 10 & 190\\
+Naphthalene \& PAH\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.29 & 5.51\\
+Hydrogen Sulfide\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.09 & 1.71\\
+Total VOC\textbackslash{}*\textbackslash{}* & -- & 195.51\\
 \bottomrule
 \end{tabular}}
+\end{table}
 
-*Assumes 95\% volatilization
-**Excludes hydrogen sulfide (not organic)
-***Is a Hazardous Air Pollutant
+\noindent
+* = Assumes 95\% volatilization
+** = Excludes hydrogen sulfide (not organic)
+*** = Is a Hazardous Air Pollutant
 
 \end{document}

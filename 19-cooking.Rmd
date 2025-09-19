@@ -1,25 +1,3 @@
---- 
-documentclass: book
-classoption: oneside
-biblio-style: apalike
-link-citations: yes
-colorlinks: yes
-lot: yes
-lof: yes
-fontsize: 11pt
----
-
-```{r, include=FALSE}
-library(readxl)
-library(knitr)
-library(kableExtra)
-library(readr)
-library(ggplot2)
-library(dplyr)
-library(scales)
-library(glue)
-```
-
 # Cooking {#cooking}
 
 ## Sector Descriptions and Overview 
@@ -150,12 +128,12 @@ kableExtra::kbl(
 kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
 ```
 \noindent
-\* = Consumption statistics for fresh and frozen fish and shellfish is not available after 2018
+\* = Consumption statistics for fresh and frozen fish and shellfish is not available after 2018 <br> \newline
 
 ```{r, include=FALSE}
 df <- data.frame(
-  Quantity = c("USDA Consumption at Home\\*", 
-               "USDA Commercial Consumption\\*", 
+  Quantity = c("USDA Consumption at Home\*", 
+               "USDA Commercial Consumption\*", 
                "Base Methods Commercial Consumption", 
                "Scale Factor"),
   Steak     = c("3,172,566",
@@ -189,14 +167,14 @@ df <- data.frame(
 kableExtra::kbl(
   df, booktabs = TRUE, 
   caption = 'Scale Factor Derivation',
-  col.names = c("Quantity", "Steak\\*\\*", "Hamburger\\*\\*", "Poultry", "Pork", "Seafood", "Other"),
+  col.names = c("Quantity", "Steak\*\*", "Hamburger\*\*", "Poultry", "Pork", "Seafood", "Other"),
   label = "scale-factor"
 ) %>%
 kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
 ```
 \noindent
-\* = Using data from the USDA’s Food Consumption and Nutrition Intakes, it is assumed that ~65% of meat is consumed at home and ~35% is consumed away from home (restaurants, fast food, school, etc.). 
-\*\* = It is assumed that half of all beef consumption reported in the USDA’s Food Availability Data System is steak and half is hamburger.
+\* = Using data from the USDA’s Food Consumption and Nutrition Intakes, it is assumed that ~65% of meat is consumed at home and ~35% is consumed away from home (restaurants, fast food, school, etc.). <br> \newline
+\*\* = It is assumed that half of all beef consumption reported in the USDA’s Food Availability Data System is steak and half is hamburger. <br> \newline
 
 The amount of french fries cooked in each county is calculated based on the amount of frozen potatoes used in the foodservice industry. The total amount of french fries cooked is reported at the national level. The process used to distribute the national amount of french fries cooked to the county-level is discussed in the next section.
 

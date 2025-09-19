@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.11)  18 SEP 2025 16:06
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.18)  19 SEP 2025 10:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **NEI-2023-TSD.tex
 (./NEI-2023-TSD.tex
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-08-13>
+L3 programming layer <2025-09-02>
 (c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
 (c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/bk11.clo
@@ -98,7 +98,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ) (c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2025-08-13 L3 programming layer (loader) 
+Package: expl3 2025-09-02 L3 programming layer (loader) 
 (c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
 \g__graphics_track_int=\count292
@@ -792,7 +792,7 @@ File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
 \BKM@id=\count352
 ))
 Package hyperref Info: Option `colorlinks' set `true' on input line 102.
-No file NEI-2023-TSD.aux.
+(./NEI-2023-TSD.aux)
 \openout1 = `NEI-2023-TSD.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
@@ -1068,9 +1068,6 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 107.
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 File: figures/epa-logo.jpg Graphic file (type bmp)
 <figures/epa-logo.jpg>
 LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
@@ -1086,7 +1083,35 @@ LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
 (Font)              scaled to size 24.88pt on input line 139.
 LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
 (Font)              scaled to size 24.88pt on input line 139.
-No file NEI-2023-TSD.toc.
+(./NEI-2023-TSD.toc
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.2582pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.89873pt on input line 3.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3.
+(c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 11.79861pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.25902pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.8993pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.7961pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.25726pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.89806pt on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
+(c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
+(c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
 \tf@toc=\write3
 \openout3 = `NEI-2023-TSD.toc'.
 
@@ -1094,8 +1119,7 @@ No file NEI-2023-TSD.toc.
 
 [2
 
-]
-No file NEI-2023-TSD.lof.
+] (./NEI-2023-TSD.lof)
 \tf@lof=\write4
 \openout4 = `NEI-2023-TSD.lof'.
 
@@ -1103,8 +1127,7 @@ No file NEI-2023-TSD.lof.
 
 [3
 
-]
-No file NEI-2023-TSD.lot.
+] (./NEI-2023-TSD.lot)
 \tf@lot=\write5
 \openout5 = `NEI-2023-TSD.lot'.
 
@@ -1125,67 +1148,6 @@ LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
 LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
 (Font)              scaled to size 14.4pt on input line 307.
 
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 309.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 309.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 309.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 309.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 309.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 309.
-
-
-LaTeX Warning: Reference `tab:cooking-sccs' on page 9 undefined on input line 311.
-
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.2582pt on input line 332.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.89873pt on input line 332.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 332.
-(c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 11.79861pt on input line 332.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.25902pt on input line 332.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.8993pt on input line 332.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.7961pt on input line 332.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.25726pt on input line 332.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.89806pt on input line 332.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 332.
-(c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 332.
-(c:/Users/kseltzer/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 337.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 337.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 337.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 9 undefined on input line 337.
-
-
 
 [9
 
@@ -1194,21 +1156,6 @@ LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 339.
 LaTeX Font Info:    Font shape `TU/Calibri(0)/b/n' will be
 (Font)              scaled to size 12.0pt on input line 339.
-
-LaTeX Warning: Hyper reference `cooking-references' on page 10 undefined on input line 341.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 10 undefined on input line 341.
-
-
-LaTeX Warning: Reference `tab:sic-codes' on page 10 undefined on input line 341.
-
-
-LaTeX Warning: Reference `tab:fraction-appliance' on page 10 undefined on input line 361.
-
-
-LaTeX Warning: Reference `tab:mass-appliance' on page 10 undefined on input line 361.
-
 
 
 [10]
@@ -1220,29 +1167,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 426--437
  []
 
 
-LaTeX Warning: Reference `eq:mass-meat' on page 11 undefined on input line 438.
-
-
-LaTeX Warning: Hyper reference `cooking-references' on page 11 undefined on input line 438.
-
-
-LaTeX Warning: Reference `tab:USDA-consumption' on page 11 undefined on input line 438.
-
-
-LaTeX Warning: Reference `tab:scale-factor' on page 11 undefined on input line 438.
-
-
-LaTeX Warning: Reference `eq:mass-meat' on page 11 undefined on input line 438.
-
-
 
 [11]
 Underfull \hbox (badness 10000) in paragraph at lines 499--504
 
  []
-
-
-LaTeX Warning: Reference `tab:cooking-sample-calculations' on page 12 undefined on input line 507.
 
 
 
@@ -1253,59 +1182,81 @@ LaTeX Warning: Reference `tab:cooking-sample-calculations' on page 12 undefined 
 [14]
 Section 2.
 
-LaTeX Warning: Hyper reference `ref-1' on page 15 undefined on input line 585.
-
-
-LaTeX Warning: Hyper reference `ref-2' on page 15 undefined on input line 587.
-
-
-LaTeX Warning: Hyper reference `ref-3' on page 15 undefined on input line 587.
-
-
-LaTeX Warning: Hyper reference `ref-4' on page 15 undefined on input line 589.
-
-
 
 [15
 
 ]
 
-LaTeX Warning: Hyper reference `ref-1' on page 16 undefined on input line 628.
-
-
-
 [16]
 
-LaTeX Warning: Hyper reference `ref-1' on page 17 undefined on input line 630.
+LaTeX Warning: Hyper reference `ref-1' on page 17 undefined on input line 637.
 
 
-LaTeX Warning: Hyper reference `ref-1' on page 17 undefined on input line 643.
+Underfull \hbox (badness 10000) in paragraph at lines 631--638
 
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 637--644
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 645.
+LaTeX Font Info:    Font shape `TU/Calibri(0)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 645.
+
+Underfull \hbox (badness 10000) in paragraph at lines 652--658
 
  []
 
 
-! LaTeX Error: Bad math environment delimiter.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.648 \[
-         Usage_{s,a} =
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 670--676
 
- 
+ []
+
+LaTeX Font Info:    Font shape `TU/Calibri(1)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 686.
+LaTeX Font Info:    Font shape `TU/Calibri(1)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 686.
+LaTeX Font Info:    Font shape `TU/Calibri(1)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 686.
+
+Underfull \hbox (badness 10000) in paragraph at lines 690--693
+
+ []
+
+
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 705--708
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 724--729
+
+ []
+
+
+
+[19]
+
+[20]
+
+[21] (./NEI-2023-TSD.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 19409 strings out of 470457
- 352488 string characters out of 5489249
- 946310 words of memory out of 5000000
- 47455 multiletter control sequences out of 15000+600000
- 630570 words of font info for 86 fonts, out of 8000000 for 9000
+ 19472 strings out of 470454
+ 353914 string characters out of 5489170
+ 948752 words of memory out of 5000000
+ 47507 multiletter control sequences out of 15000+600000
+ 630610 words of font info for 91 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,13n,116p,1444b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on NEI-2023-TSD.pdf (16 pages).
+ 90i,16n,116p,1459b,480s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on NEI-2023-TSD.pdf (21 pages).
