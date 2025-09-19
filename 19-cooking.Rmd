@@ -265,7 +265,37 @@ The amount of french fries cooked in limited and full-service restaurants are th
 
 ### Emission Factors
 
+Emissions factors from 5 studies are utilized to estimate emissions from commercial and residential cooking.  For commercial cooking, emissions factors are retrieved from McDonald et al. 2003 [[ref 5]](#cooking-references) and Norbeck 2007 [[ref 14]](#cooking-references). For residential cooking, emissions factors span several orders-of-magnitude [[refs 1](#cooking-references), [3](#cooking-references), [refs 15](#cooking-references)]. Given the uncertainty in the emissions factors and range of the studies included here, the 90th percentile emissions factors for each pollutant for residential cooking were adopted and applied. These emissions factors should be updated as newer results become available.  
 
+The PM2.5, VOC, and CO emissions factors for each SCC are listed in Table \@ref(tab:comm-res-EFs). 
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-19/comm-res-EFs.xlsx")
+df[is.na(df)] <- ""
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE,
+  caption = 'Commercial and Residential Cooking Emissions Factors',
+  label = 'comm-res-EFs'
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
+```
+
+```{r, include=FALSE}
+df <- read_excel("./tables/Section-19/res-EFs.xlsx")
+df[is.na(df)] <- ""
+```
+
+```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
+kableExtra::kbl(
+  df, booktabs = TRUE,
+  caption = 'Residential cooking emissions factors used to estimate the 90th percentile',
+  label = 'res-EFs'
+) %>%
+kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
+```
 
 ### Controls
 
@@ -273,38 +303,44 @@ There are no controls assumed for this category.
 
 ### Emissions
 
+Emissions are quantified using county-level consumption estimates and the emissions factors provided above as follows: 
 \begin{equation} 
-  E_{c,a} = Usage_{c,a} \times \frac{EF_{a}}{2000}
+  E_{c,a} = \sum_{t}(M_{c,t,a} \times EF_{t,a})
   (\#eq:cooking-emissions)
 \end{equation} 
 
 <div style="margin-left: 2em;">
   Where: <br> \newline
-  \( E_{c,a} \) = Annual emissions in county *c* for application *a*, in short tons <br> \newline
-  \( Usage_{c,a} \) = Liquid asphalt usage in county *c* for application *a*, in short tons <br> \newline
-  \( EF_{a} \) = Emission factor for application *a*, in lb/ton asphalt <br> \newline
-  \( a \) = Application types include hot-mix, warm-mix, cutback, and emulsified <br> \newline
+  \( E_{c,a} \) = Estimated annual emissions in county *c* on each appliance *a*, in tons <br> \newline
+  \( M_{c,t,a} \) = Estimated mass of commercially cooked meat in county *c* for each meat-type *t* on each appliance *a*, in tons <br> \newline
+  \( EF_{t,a} \) = Emissions factor for meat-type *t* on appliance *a*, in lbs/ton <br> \newline
+  \( c \) = County <br> \newline
+  \( t \) = Meat-Type (e.g., Steak, Hamburger, etc.) <br> \newline
+  \( a \) = Appliance (e.g., Conveyorized Charbroiler, Underfired Charbroiler, etc.) <br> \newline
 </div>
 
 ### Sample Calculations
 
-Table \@ref(tab:cooking-sample-calculations) contains sample calculations for VOC emissions from emulsified asphalt (SCC: 2461022000). The values in these equations are demonstrating program logic and are not representative of any specific NEI year or county.
+Table \@ref(tab:cooking-sample-calculations) contains sample calculations for VOC emissions from commercial cooking on flat griddles. The values in these equations are demonstrating program logic and are not representative of any specific NEI year or county..
 
 ```{r, include=FALSE}
 df <- data.frame(
-  Eq = c(1:4),
-  Equation = c("$Usage_{s,a} = Usage_{sp,a} \\times \\frac{HA_{s}}{HA_{sp}}$", 
-               "Only applicable for hot- and warm-mix", 
-               "$Usage_{c,a} = Usage_{s,a} \\times \\frac{\\sum_{r}PVMT_{c}}{\\sum_{r}PVMT_{s}}$", 
-               "$E_{c,a} = Usage_{c,a} \\times \\frac{EF_{a}}{2000}$"),
-  Values = c("$172 \\times \\frac{6.5}{19.9}$", 
-             "--", 
-             "$56 \\times \\frac{2.38E^9}{5.15E^{10}}$", 
-             "$2.58 \\times \\frac{197.52}{2000}$"),
-  Result = c("56 short tons of liquid asphalt usage for emulsified applications", 
-             "--", 
-             "2.58 short tons of liquid asphalt usage for emulsified applications", 
-             "0.26 short tons of VOC emissions from emulsified asphalt")
+  Eq = c("1a", "1b", "1c", "2a", "2b"),
+  Equation = c("$R_{c,r} \\times A_{r,a} \\times N_{r,a}$", 
+               "$\\sum_{r}(R_{c,r} \\times A_{r,a} \\times N_{r,a})$", 
+               "$\\sum_{r}(R_{c,r} \\times A_{r,a} \\times N_{r,a}) \\times T_{t,a} \\times SF_{t}$", 
+               "$M_{c,t,a} \\times EF_{t,a}$",
+               "$\\sum_{t}(M_{c,t,a} \\times EF_{t,a})$"),
+  Values = c("$6 \\times 51.9\\% \\times 1.43$", 
+             "$\\sum(Flat Griddles)$", 
+             "$9.5 \\times 9.4 \\times 9.38\\%$", 
+             "$8.38 \\times 0.14 \\div 2000$",
+             "$\\sum(VOC emissions)$"),
+  Result = c("4.45 flat griddles in fast food restaurants", 
+             "9.5 flat griddles in all restaurants", 
+             "8.38 tons of hamburger cooked on flat griddles", 
+             "0.00059 tons VOC emissions from cooking hamburgers on flat griddles", 
+             "0.04 tons VOC emissions from flat griddles")
 )
 ```
 
@@ -324,7 +360,6 @@ kable_styling(full_width = FALSE, position = "center", latex_options = "scale_do
 -	Sector changed from “Commercial Cooking” to “Cooking” to include both commercial and residential cooking.
 -	Scale Factor are applied to the average amount of meat cooked on each cooking device to ensure national-level meat consumption matches USDA statistics.
 -	Emission Factors were updated
-
 
 ### Puerto Rick and U.S. Virgin Islands
 

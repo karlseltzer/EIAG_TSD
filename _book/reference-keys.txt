@@ -37,3 +37,5 @@ sample-calculations-1
 improvementschanges-in-the-2023-nei-1
 puerto-rick-and-u.s.-virgin-islands-1
 asphalt-references
+tab:comm-res-EFs
+tab:res-EFs
