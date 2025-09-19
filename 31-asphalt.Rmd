@@ -75,7 +75,7 @@ Separately, state-level, year-specific data on the production of asphalt pavemen
   \( HA_{s} \) = Heated application usage in state *s* from the NAPA survey, in short tons <br> \newline
   \( HA_{sp} \) = Heated application usage in sub-PADD *sp* associated with state *s* from the NAPA survey, in short tons <br> \newline
   \( a \) = Application types include hot-mix, warm-mix, cutback, and emulsified <br> \newline
-  \( sp \) = sub-PADD associated with state *s*. sub-PADDs include the 11 districts included in the Asphalt Institute survey [[ref 1]](#ref-1) <br> \newline
+  \( sp \) = sub-PADD associated with state *s*. sub-PADDs include the 11 districts included in the Asphalt Institute survey [[ref 1]](#asphalt-references) <br> \newline
 </div>
 
 An additional transformation must be done to split the state-level, heated application usage into hot-mix and warm-mix application, respectively.
@@ -253,7 +253,7 @@ df <- data.frame(
 ```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
 kableExtra::kbl(
   df, booktabs = TRUE, 
-  col.names = c("Product Supplier", "MSDS\\/SDS ID"),
+  col.names = c("Product Supplier", "MSDS/SDS ID"),
   label = "cutback-MSDS"
 ) %>%
 kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
@@ -262,13 +262,13 @@ kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_
 ```{r, include=FALSE}
 df <- data.frame(
   Pollutant = c("Naphtha", 
-               "Naphthalene & PAH\\*\\*\\*", 
-               "Toluene\\*\\*\\*",
-               "Xylene\\*\\*\\*",
-               "Benzene\\*\\*\\*",
-               "Ethylbenzene\\*\\*\\*",
-               "Hydrogen Sulfide\\*\\*\\*", 
-               "Total VOC\\*\\*"),
+               "Naphthalene & PAH***", 
+               "Toluene***",
+               "Xylene***",
+               "Benzene***",
+               "Ethylbenzene***",
+               "Hydrogen Sulfide***", 
+               "Total VOC**"),
   Wght     = c("40",
                 "0.58",
                 "0.59",
@@ -291,7 +291,7 @@ df <- data.frame(
 ```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
 kableExtra::kbl(
   df, booktabs = TRUE, 
-  col.names = c("Pollutant", "Avg. \\% by Weight", "Emission Factor [lb/ton]\\*"),
+  col.names = c("Pollutant", "Avg. Wght. Percent", "Emission Factor [lb/ton]*"),
   label = "cutback-EF"
 ) %>%
 kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
@@ -318,7 +318,7 @@ df <- data.frame(
 ```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
 kableExtra::kbl(
   df, booktabs = TRUE, 
-  col.names = c("Product Supplier", "MSDS\\/SDS ID"),
+  col.names = c("Product Supplier", "MSDS/SDS ID"),
   label = "cutback-MSDS"
 ) %>%
 kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))
@@ -327,9 +327,9 @@ kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_
 ```{r, include=FALSE}
 df <- data.frame(
   Pollutant = c("Naphtha", 
-               "Naphthalene & PAH\\*\\*\\*", 
-               "Hydrogen Sulfide\\*\\*\\*", 
-               "Total VOC\\*\\*"),
+               "Naphthalene & PAH***", 
+               "Hydrogen Sulfide***", 
+               "Total VOC**"),
   Wght     = c("10",
                 "0.29",
                 "0.09",
@@ -344,7 +344,7 @@ df <- data.frame(
 ```{r tidy=FALSE, echo=FALSE, booktabs = TRUE}
 kableExtra::kbl(
   df, booktabs = TRUE, 
-  col.names = c("Pollutant", "Avg. \\% by Weight", "Emission Factor [lb/ton]\\*"),
+  col.names = c("Pollutant", "Avg. Wght. Percent", "Emission Factor [lb/ton]*"),
   label = "cutback-EF"
 ) %>%
 kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))

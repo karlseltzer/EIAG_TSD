@@ -132,8 +132,8 @@ kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_
 
 ```{r, include=FALSE}
 df <- data.frame(
-  Quantity = c("USDA Consumption at Home\*", 
-               "USDA Commercial Consumption\*", 
+  Quantity = c("USDA Consumption at Home*", 
+               "USDA Commercial Consumption*", 
                "Base Methods Commercial Consumption", 
                "Scale Factor"),
   Steak     = c("3,172,566",
@@ -167,7 +167,7 @@ df <- data.frame(
 kableExtra::kbl(
   df, booktabs = TRUE, 
   caption = 'Scale Factor Derivation',
-  col.names = c("Quantity", "Steak\*\*", "Hamburger\*\*", "Poultry", "Pork", "Seafood", "Other"),
+  col.names = c("Quantity", "Steak**", "Hamburger**", "Poultry", "Pork", "Seafood", "Other"),
   label = "scale-factor"
 ) %>%
 kable_styling(full_width = FALSE, position = "center", latex_options = c("scale_down", "H"))

@@ -456,7 +456,7 @@ Year & U.S. Population [millions] & Beef [short tons] & Veal [short tons] & Pork
 \end{table}
 
 \noindent
-* = Consumption statistics for fresh and frozen fish and shellfish is not available after 2018
+* = Consumption statistics for fresh and frozen fish and shellfish is not available after 2018 \newline
 
 \begin{table}[H]
 \centering
@@ -465,10 +465,10 @@ Year & U.S. Population [millions] & Beef [short tons] & Veal [short tons] & Pork
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{lllllll}
 \toprule
-Quantity & Steak\textbackslash{}*\textbackslash{}* & Hamburger\textbackslash{}*\textbackslash{}* & Poultry & Pork & Seafood & Other\\
+Quantity & Steak** & Hamburger** & Poultry & Pork & Seafood & Other\\
 \midrule
-USDA Consumption at Home\textbackslash{}* & 3,172,566 & 3,172,566 & 12,158,936 & 5,457,592 & 1,305,599 & 163,281\\
-USDA Commercial Consumption\textbackslash{}* & 1,708,305 & 1,708,305 & 6,547,120 & 2,938,703 & 700,901 & 87,921\\
+USDA Consumption at Home* & 3,172,566 & 3,172,566 & 12,158,936 & 5,457,592 & 1,305,599 & 163,281\\
+USDA Commercial Consumption* & 1,708,305 & 1,708,305 & 6,547,120 & 2,938,703 & 700,901 & 87,921\\
 Base Methods Commercial Consumption & 8,583,805 & 18,206,818 & 22,104,545 & 3,986,449 & 8,392,852 & 8,888,702\\
 Scale Factor & 0.20 & 0.09 & 0.30 & 0.74 & 0.08 & 0.01\\
 \bottomrule
@@ -476,8 +476,8 @@ Scale Factor & 0.20 & 0.09 & 0.30 & 0.74 & 0.08 & 0.01\\
 \end{table}
 
 \noindent
-* = Using data from the USDA's Food Consumption and Nutrition Intakes, it is assumed that \textasciitilde65\% of meat is consumed at home and \textasciitilde35\% is consumed away from home (restaurants, fast food, school, etc.).
-** = It is assumed that half of all beef consumption reported in the USDA's Food Availability Data System is steak and half is hamburger.
+* = Using data from the USDA's Food Consumption and Nutrition Intakes, it is assumed that \textasciitilde65\% of meat is consumed at home and \textasciitilde35\% is consumed away from home (restaurants, fast food, school, etc.). \newline
+** = It is assumed that half of all beef consumption reported in the USDA's Food Availability Data System is steak and half is hamburger. \newline
 
 The amount of french fries cooked in each county is calculated based on the amount of frozen potatoes used in the foodservice industry. The total amount of french fries cooked is reported at the national level. The process used to distribute the national amount of french fries cooked to the county-level is discussed in the next section.
 
@@ -654,7 +654,7 @@ Where: \newline
 \(Usage_{s}\) = Liquid asphalt usage in state \emph{s} for heated application, as derived in \eqref{eq:state-usage}, in short tons \newline
 \(WMA_{s}\) = Warm-mix application usage at reduced temperatures in state \emph{s} from the NAPA survey, in short tons \newline
 \(HA_{s}\) = Heated application usage in state \emph{s} from the NAPA survey, in short tons. \newline
-\(a\) = Application types include hot-mix and warm-mix. State-level summation across application types in \eqref{eq:piecewise-usage} yield the state-level application usage for heated application from \eqref{eq:state-usage}. \newline
+\(a\) = Application types include hot-mix and warm-mix. State-level summation across application types in Eqn. \eqref{eq:piecewise-usage} yield the state-level application usage for heated application from Eqn. \eqref{eq:state-usage}. \newline
 
 \subsection{Allocation Procedure}\label{allocation-procedure-1}
 
@@ -786,7 +786,7 @@ Insufficient data exists to calculate emissions for the counties in Puerto Rico 
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{ll}
 \toprule
-Product Supplier & MSDS\textbackslash{}/SDS ID\\
+Product Supplier & MSDS/SDS ID\\
 \midrule
 Valero & 2013V04\\
 Asphalt Emulsion Industries & CUT-SDS-1\\
@@ -805,25 +805,25 @@ Valero & 210\\
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{lll}
 \toprule
-Pollutant & Avg. \textbackslash{}\% by Weight & Emission Factor [lb/ton]\textbackslash{}*\\
+Pollutant & Avg. \textbackslash{}\% by Weight & Emission Factor [lb/ton]*\\
 \midrule
 Naphtha & 40 & 760\\
-Naphthalene \& PAH\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.58 & 11.02\\
-Toluene\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.59 & 11.21\\
-Xylene\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.99 & 18.81\\
-Benzene\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.19 & 3.61\\
+Naphthalene \& PAH*** & 0.58 & 11.02\\
+Toluene*** & 0.59 & 11.21\\
+Xylene*** & 0.99 & 18.81\\
+Benzene*** & 0.19 & 3.61\\
 \addlinespace
-Ethylbenzene\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.49 & 9.31\\
-Hydrogen Sulfide\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.09 & 1.71\\
-Total VOC\textbackslash{}*\textbackslash{}* & -- & 813.96\\
+Ethylbenzene*** & 0.49 & 9.31\\
+Hydrogen Sulfide*** & 0.09 & 1.71\\
+Total VOC** & -- & 813.96\\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \noindent
-* = Assumes 95\% volatilization
-** = Excludes hydrogen sulfide (not organic)
-*** = Is a Hazardous Air Pollutant
+* = Assumes 95\% volatilization \newline
+** = Excludes hydrogen sulfide (not organic) \newline
+*** = Is a Hazardous Air Pollutant \newline
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -838,7 +838,7 @@ Total VOC\textbackslash{}*\textbackslash{}* & -- & 813.96\\
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{ll}
 \toprule
-Product Supplier & MSDS\textbackslash{}/SDS ID\\
+Product Supplier & MSDS/SDS ID\\
 \midrule
 Marathon & 0137MAR019\\
 Marathon & 0138MAR019\\
@@ -853,19 +853,19 @@ U.S. Oil and Refining Co. & 951\\
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{lll}
 \toprule
-Pollutant & Avg. \textbackslash{}\% by Weight & Emission Factor [lb/ton]\textbackslash{}*\\
+Pollutant & Avg. \textbackslash{}\% by Weight & Emission Factor [lb/ton]*\\
 \midrule
 Naphtha & 10 & 190\\
-Naphthalene \& PAH\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.29 & 5.51\\
-Hydrogen Sulfide\textbackslash{}*\textbackslash{}*\textbackslash{}* & 0.09 & 1.71\\
-Total VOC\textbackslash{}*\textbackslash{}* & -- & 195.51\\
+Naphthalene \& PAH*** & 0.29 & 5.51\\
+Hydrogen Sulfide*** & 0.09 & 1.71\\
+Total VOC** & -- & 195.51\\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \noindent
-* = Assumes 95\% volatilization
-** = Excludes hydrogen sulfide (not organic)
-*** = Is a Hazardous Air Pollutant
+* = Assumes 95\% volatilization \newline
+** = Excludes hydrogen sulfide (not organic) \newline
+*** = Is a Hazardous Air Pollutant \newline
 
 \end{document}

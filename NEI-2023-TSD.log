@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.18)  19 SEP 2025 10:44
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.18)  19 SEP 2025 11:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1167,8 +1167,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 426--437
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 458--460
+
+ []
+
+
 
 [11]
+Underfull \hbox (badness 10000) in paragraph at lines 478--481
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 499--504
 
  []
@@ -1240,6 +1250,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 724--729
 [19]
 
 [20]
+Underfull \hbox (badness 10000) in paragraph at lines 823--827
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 866--870
+
+ []
+
+
 
 [21] (./NEI-2023-TSD.aux)
  ***********
